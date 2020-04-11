@@ -2,7 +2,6 @@ package com.example.healthassistant.utils.navigation
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import com.example.healthassistant.base.BaseViewModel
 import com.example.healthassistant.utils.livedata.Event
 import com.example.healthassistant.utils.livedata.observeEvent
 

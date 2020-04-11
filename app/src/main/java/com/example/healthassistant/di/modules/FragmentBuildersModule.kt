@@ -1,12 +1,15 @@
 package com.example.healthassistant.di.modules
 
-import com.example.healthassistant.ui.DashboardFragment
+import com.example.healthassistant.di.PerFragment
+import com.example.healthassistant.ui.dashboard.DashboardFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
+@Suppress("unused")
 @Module
 abstract class FragmentBuildersModule {
 
+    @PerFragment
     @ContributesAndroidInjector
-    internal abstract fun contributesDashboardFragment(): DashboardFragment
+    abstract fun contributeDashboardFragment(): DashboardFragment
 }

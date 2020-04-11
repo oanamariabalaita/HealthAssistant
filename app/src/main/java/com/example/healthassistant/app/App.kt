@@ -1,22 +1,23 @@
 package com.example.healthassistant.app
 
-import android.app.Activity
 import android.app.Application
 import com.example.healthassistant.BuildConfig
+import com.example.healthassistant.di.components.DaggerAppComponent
 import com.facebook.stetho.Stetho
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class App : Application(), HasActivityInjector {
+class App : Application(), HasAndroidInjector {
 
     companion object {
         lateinit var instance: App
     }
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
@@ -37,5 +38,6 @@ class App : Application(), HasActivityInjector {
 
     }
 
-    override fun activityInjector() = dispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
 }

@@ -1,19 +1,30 @@
 package com.example.healthassistant.ui.main
 
 import android.os.Bundle
-import com.example.healthassistant.R
-import com.example.healthassistant.base.BaseActivity
-import com.example.healthassistant.base.BaseViewModel
+import com.example.healthassistant.databinding.ActivityMainBinding
+import com.github.mustafaozhan.basemob.activity.BaseVBActivity
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class MainActivity : BaseActivity<BaseViewModel>() {
+class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
+
+    @Inject
+    lateinit var androidInjector: AndroidInjector<Any>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        performDI()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
     }
 
-    override fun getLayoutResId(): Int? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun bind() {
+        binding = ActivityMainBinding.inflate(layoutInflater)
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    private fun performDI() = AndroidInjection.inject(this)
+
 
 }

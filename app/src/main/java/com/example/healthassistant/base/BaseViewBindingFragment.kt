@@ -1,26 +1,56 @@
 package com.example.healthassistant.base
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
+import com.example.healthassistant.utils.navigation.INavigationResult
+import com.example.healthassistant.utils.navigation.NavigationResult
+import com.example.healthassistant.utils.navigation.NavigationResultViewModel
+import com.example.healthassistant.utils.permissions.FragmentPermissionsHandler
+import com.example.healthassistant.utils.permissions.IFragmentPermissions
+import com.example.healthassistant.utils.permissions.IPermissionsHandler
+import com.github.mustafaozhan.basemob.fragment.BaseVBFragment
+import javax.inject.Inject
 
-abstract class BaseViewBindingFragment<TViewBinding : ViewBinding> :
-    BaseFragment() {
+abstract class BaseViewBindingFragment<TViewBinding : ViewBinding> : BaseVBFragment<TViewBinding>(),
+    IFragmentPermissions, INavigationResult {
 
-    protected lateinit var binding: TViewBinding
+    @Inject
+    lateinit var navigationResultViewModel: NavigationResultViewModel
 
-    abstract fun bind()
+    @Inject
+    lateinit var fragmentPermissionHandler: FragmentPermissionsHandler
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        bind()
+    open fun canNavigateUp() = true
+
+    open fun onBackPressed() {}
+
+
+    override fun runWithPermission(permissionsHandler: IPermissionsHandler) {
+        fragmentPermissionHandler.runWithPermission(permissionsHandler, this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = binding.root
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        fragmentPermissionHandler.handleRequestPermissionResult(
+            requestCode,
+            permissions,
+            grantResults
+        )
+    }
+
+    override fun observeNavigationResult(
+        tag: String,
+        lifecycleOwner: LifecycleOwner,
+        callback: (navigationResult: NavigationResult) -> Unit
+    ) {
+        navigationResultViewModel.observeNavigationResult(tag, lifecycleOwner, callback)
+    }
+
+    override fun setNavigationResult(tag: String, navigationResult: NavigationResult) {
+        navigationResultViewModel.produceNavigationResult(tag, navigationResult)
+    }
 
 }
