@@ -1,6 +1,8 @@
 package com.example.healthassistant.base
 
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.example.healthassistant.utils.navigation.INavigationResult
 import com.example.healthassistant.utils.navigation.NavigationResult
@@ -15,7 +17,11 @@ abstract class BaseViewBindingFragment<TViewBinding : ViewBinding> : BaseVBFragm
     IFragmentPermissions, INavigationResult {
 
     @Inject
-    lateinit var navigationResultViewModel: NavigationResultViewModel
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val navigationResultViewModel: NavigationResultViewModel by viewModels {
+        viewModelFactory
+    }
 
     @Inject
     lateinit var fragmentPermissionHandler: FragmentPermissionsHandler
@@ -23,8 +29,6 @@ abstract class BaseViewBindingFragment<TViewBinding : ViewBinding> : BaseVBFragm
     open fun canNavigateUp() = true
 
     open fun onBackPressed() {}
-
-
     override fun runWithPermission(permissionsHandler: IPermissionsHandler) {
         fragmentPermissionHandler.runWithPermission(permissionsHandler, this)
     }
@@ -52,5 +56,4 @@ abstract class BaseViewBindingFragment<TViewBinding : ViewBinding> : BaseVBFragm
     override fun setNavigationResult(tag: String, navigationResult: NavigationResult) {
         navigationResultViewModel.produceNavigationResult(tag, navigationResult)
     }
-
 }

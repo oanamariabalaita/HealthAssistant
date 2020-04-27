@@ -7,6 +7,7 @@ import com.example.healthassistant.di.modules.MainActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 @Singleton
@@ -16,7 +17,7 @@ import javax.inject.Singleton
         AppModule::class,
         MainActivityModule::class]
 )
-interface AppComponent {
+interface AppComponent : AndroidInjector<App> {
 
     @Component.Builder
     interface Builder {
@@ -26,6 +27,6 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(application: App)
+    override fun inject(application: App)
 
 }

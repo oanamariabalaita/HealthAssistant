@@ -4,8 +4,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.example.healthassistant.utils.livedata.Event
 import com.example.healthassistant.utils.livedata.observeEvent
+import com.github.mustafaozhan.basemob.viewmodel.BaseViewModel
+import javax.inject.Inject
 
-class NavigationResultViewModel: BaseViewModel() {
+class NavigationResultViewModel @Inject constructor() : BaseViewModel() {
 
     private val navigationResults = mutableMapOf<String, MutableLiveData<Event<NavigationResult>>>()
 

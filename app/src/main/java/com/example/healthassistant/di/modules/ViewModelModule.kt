@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.healthassistant.di.ViewModelFactory
 import com.example.healthassistant.di.ViewModelKey
 import com.example.healthassistant.ui.dashboard.DashboardViewModel
-import com.github.mustafaozhan.basemob.view.BaseViewEffect
-import com.github.mustafaozhan.basemob.view.BaseViewEvent
-import com.github.mustafaozhan.basemob.view.BaseViewState
+import com.example.healthassistant.ui.main.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -18,7 +16,16 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(DashboardViewModel::class)
-    abstract fun bindDashboardViewModel(dashboardViewModel: DashboardViewModel<BaseViewEffect, BaseViewEvent, BaseViewState>): ViewModel
+    abstract fun bindDashboardViewModel(
+        dashboardViewModel: DashboardViewModel
+    ): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(
+        mainViewModel: MainViewModel
+    ): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

@@ -6,12 +6,12 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="vm"
             type="com.example.healthassistant.ui.dashboard.DashboardViewModel" />
 
         <variable
-            name="viewEvent"
-            type="com.example.healthassistant.ui.dashboard.DashboardViewEvent" />
+            name="event"
+            type="com.example.healthassistant.ui.dashboard.structure.DashboardEvent" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

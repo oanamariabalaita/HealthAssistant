@@ -1,22 +1,33 @@
 package com.example.healthassistant.ui.dashboard
 
-import androidx.lifecycle.MutableLiveData
-import com.github.mustafaozhan.basemob.view.BaseViewEffect
-import com.github.mustafaozhan.basemob.view.BaseViewEvent
-import com.github.mustafaozhan.basemob.view.BaseViewState
-import com.github.mustafaozhan.basemob.viewmodel.UDFViewModel
+import com.example.healthassistant.ui.dashboard.structure.DashboardData
+import com.example.healthassistant.ui.dashboard.structure.DashboardEffect
+import com.example.healthassistant.ui.dashboard.structure.DashboardEvent
+import com.example.healthassistant.ui.dashboard.structure.DashboardState
+import com.github.mustafaozhan.basemob.lifecycle.MutableSingleLiveData
+import com.github.mustafaozhan.basemob.lifecycle.SingleLiveData
+import com.github.mustafaozhan.basemob.viewmodel.SEEDViewModel
 import javax.inject.Inject
 
-class DashboardViewModel<ViewEffect : BaseViewEffect, ViewEvent : BaseViewEvent, ViewState : BaseViewState> @Inject constructor() :
-    UDFViewModel<DashboardViewEffect, DashboardViewEvent, DashboardViewState>(),
-    DashboardViewEvent {
+class DashboardViewModel @Inject constructor() :
+    SEEDViewModel<DashboardState, DashboardEvent, DashboardEffect, DashboardData>(),
+    DashboardEvent {
 
-    override val viewEffectLiveData: MutableLiveData<DashboardViewEffect>
-        get() = MutableLiveData()
+    // region SEED
+    override val state: DashboardState
+        get() = DashboardState()
 
-    override val viewState: DashboardViewState
-        get() = DashboardViewState()
+    private val _effect = MutableSingleLiveData<DashboardEffect>()
+    override val effect: SingleLiveData<DashboardEffect>
+        get() = _effect
 
-    override fun getViewEvent() = this as DashboardViewEvent
+    override val data: DashboardData
+        get() = DashboardData()
 
+    override fun getEvent() = this as DashboardEvent
+    // endregion
+
+    // region Event
+
+    // endregion
 }
