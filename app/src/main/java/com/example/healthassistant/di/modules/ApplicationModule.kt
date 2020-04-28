@@ -1,87 +1,51 @@
 package com.example.healthassistant.di.modules
 
-//
-//import com.example.healthassistant.BuildConfig
-//import com.example.healthassistant.data.HealthService
-//import com.example.healthassistant.utils.constants.Constants
-//import com.example.healthassistant.utils.navigation.NavigationResultViewModel
-//import com.example.healthassistant.utils.permissions.FragmentPermissionsHandler
-//import com.facebook.stetho.okhttp3.StethoInterceptor
-//import com.google.gson.Gson
-//import dagger.Module
-//import dagger.Provides
-//import okhttp3.OkHttpClient
-//import okhttp3.logging.HttpLoggingInterceptor
-//import retrofit2.Retrofit
-//import retrofit2.converter.gson.GsonConverterFactory
-//import javax.inject.Qualifier
-//import javax.inject.Singleton
-//
-//@Module
-//class ApplicationModule {
-//
-//    @Provides
-//    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
-//        OkHttpClient.Builder().addInterceptor(interceptor)
-//            .addNetworkInterceptor(StethoInterceptor())
-//            .build()
-//
-//    @Provides
-//    fun provideLoggingInterceptor() =
-//        HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE }
-//
-//    @Provides
-//    @Singleton
-//    fun provideGson(): Gson = Gson()
-//
-//    @Provides
-//    @Singleton
-//    fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory =
-//        GsonConverterFactory.create(gson)
-//
-//    @Provides
-//    @Singleton
-//    fun provideNavigationResultViewModel(): NavigationResultViewModel = NavigationResultViewModel()
-//
-//    @Provides
-//    @Singleton
-//    fun provideFragmentPermissionHandler(): FragmentPermissionsHandler =
-//        FragmentPermissionsHandler()
-//
-////    @CoroutineScropeIO
-////    @Provides
-////    fun provideCoroutineScopeIO() = CoroutineScope(Dispatchers.IO)
-//
-//    private fun createRetrofit(
-//        okhttpClient: OkHttpClient
-//    ): Retrofit {
-//        return Retrofit.Builder()
-//            .baseUrl(Constants.ENDPOINT)
-//            .client(okhttpClient)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//    }
-//
-//    private fun <T> provideService(
-//        okhttpClient: OkHttpClient,
-//        clazz: Class<T>
-//    ): T {
-//        return createRetrofit(okhttpClient).create(clazz)
-//    }
-//
-////    @Singleton
-////    @Provides
-////    fun provideHealthService(): HealthService {
-////        return provideService()
-////    }
-//
-//    @Qualifier
-//    @Retention(AnnotationRetention.RUNTIME)
-//    annotation class HealthRemoteDataSource
-//
-//    @Qualifier
-//    @Retention(AnnotationRetention.RUNTIME)
-//    annotation class HealthLocalDataSource
-//
-//}
+import android.app.Application
+import android.content.Context
+import androidx.room.Room
+import com.example.healthassistant.app.App
+import com.example.healthassistant.data.api.HealthApiService
+import com.example.healthassistant.data.local.AppDatabase
+import com.example.healthassistant.data.local.HealthDao
+import dagger.Module
+import dagger.Provides
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
+@Module(includes = [ViewModelModule::class])
+class ApplicationModule {
+
+    @Singleton
+    @Provides
+    internal fun providesApplication(application: App): Application = application
+
+    @Singleton
+    @Provides
+    internal fun providesContext(application: App): Context = application.applicationContext
+
+    @Singleton
+    @Provides
+    fun provideHealthApiService(): HealthApiService {
+        return Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(HealthApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDb(app: Application): AppDatabase {
+        return Room
+            .databaseBuilder(app, AppDatabase::class.java, "health")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideHealthDao(db: AppDatabase): HealthDao {
+        return db.healthDao()
+    }
+}

@@ -1,4 +1,4 @@
-package com.example.healthassistant.data
+package com.example.healthassistant.data.local
 
 import androidx.room.TypeConverter
 import java.util.Calendar

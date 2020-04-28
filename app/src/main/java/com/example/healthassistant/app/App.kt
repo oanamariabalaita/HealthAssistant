@@ -12,10 +12,6 @@ import javax.inject.Inject
 
 class App : MultiDexApplication(), HasAndroidInjector {
 
-    companion object {
-        lateinit var instance: App
-    }
-
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
@@ -31,7 +27,6 @@ class App : MultiDexApplication(), HasAndroidInjector {
             .application(this)
             .build()
             .inject(this)
-        instance = this
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
