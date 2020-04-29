@@ -125,4 +125,6 @@ dependencies {
     // optional - RxJava2 support
     implementation "androidx.work:work-rxjava2:$work_version"
 
+    // Bottom Navigation
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 }
