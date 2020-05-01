@@ -14,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
@@ -50,7 +51,7 @@ dependencies {
     def daggerVersion = '2.27'
     def androidx_lifecycle_version = "2.2.0"
     def appCompatVersion = "1.1.0"
-    def constraintLayoutVersion="2.0.0-beta4"
+    def constraintLayoutVersion = "2.0.0-beta4"
     def coroutinesVersion = "1.3.0-RC"
     def kotlinVersion = "1.3.41"
     def glideVersion = "4.10.0"
@@ -127,4 +128,11 @@ dependencies {
 
     // Bottom Navigation
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+
+    //graph
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //circle imageview
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
 }

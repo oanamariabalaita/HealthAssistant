@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainCardView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="1.5dp"
+        android:layout_marginRight="1.5dp"
+        android:layout_marginBottom="3dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@id/img_icon"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <View
+                android:id="@+id/bullet_status"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="0dip"
+                android:layout_marginRight="0dip"
+                android:background="@drawable/circle_background" />
+
+            <TextView
+                android:id="@+id/txt_last"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_icon"
+                android:layout_marginLeft="16dp"
+                android:text="Last record"
+                android:textColor="@color/gray"
+                android:textSize="9sp" />
+
+            <TextView
+                android:id="@+id/last_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_last"
+                android:layout_marginLeft="16dp"
+                android:text="--"
+                android:textSize="32sp"
+
+                />
+
+            <TextView
+                android:id="@+id/last_value_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_last"
+                android:layout_marginStart="9dp"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="25dp"
+                android:layout_toEndOf="@id/last_value"
+                android:layout_toRightOf="@id/last_value"
+                android:text=""
+                android:textColor="@color/gray"
+                android:textSize="13sp" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/last_value"
+                android:layout_margin="10dp"
+                android:background="@color/lightgray" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/line"
+
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

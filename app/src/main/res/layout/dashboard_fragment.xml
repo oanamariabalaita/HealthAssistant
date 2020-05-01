@@ -1,7 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#ECE9E9"
-    tools:context=".activity.main.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ECE9E9">
 
     <data>
 
@@ -14,11 +13,31 @@
             type="com.example.healthassistant.ui.dashboard.structure.DashboardEvent" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/included"
+                layout="@layout/item_layout_summary"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toTopOf="@id/mainRecycleView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mainRecycleView"
+                style="@style/myRecyclerViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

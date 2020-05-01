@@ -14,8 +14,36 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/main_graph" />
+
+        <com.example.healthassistant.design.CurvedBottomNavigationView
+            android:id="@+id/mBottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
+            android:foregroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </com.example.healthassistant.design.CurvedBottomNavigationView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mainFab"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:scaleType="center"
+            android:src="@drawable/blur_icon2"
+            app:fabCustomSize="60dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mBottomNavigationView"
+            app:layout_constraintEnd_toEndOf="@+id/mBottomNavigationView"
+            app:layout_constraintStart_toStartOf="@+id/mBottomNavigationView"
+            app:maxImageSize="36dp"
+            app:tint="@null" />
 
         <FrameLayout
             android:id="@+id/debug_view"

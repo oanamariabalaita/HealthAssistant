@@ -1,6 +1,61 @@
 <resources>
-    <string name="app_name">HealthAssistant</string>
-    <string name="general_ok">OK</string>
-    <string name="general_retry">Retry</string>
-    <string name="general_cancel">Cancel</string>
+    <string name="app_name">Hector</string>
+
+    <string name="login_dummy">Login Dummy</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="empty_email_error_message">Email cannot be blank</string>
+    <string name="invalid_email_error_message">Please Enter a valid email address</string>
+    <string name="empty_password_error_message">Password cannot be empty</string>
+    <string name="login_failure">Login failed</string>
+    <string name="about">About</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="feed">Feed</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+
+    <!--Network-->
+    <string name="network_error_connection">Problem with the Internet connection.</string>
+    <string name="network_error_server">Server is temporarily not available.</string>
+    <string name="network_error_unexpected">An unexpected error occurred.</string>
+
+    <string name="title">Feed</string>
+    <string name="open_source">Open Source</string>
+    <string name="rating_message">Please let us know, how can we improve ourselves?</string>
+    <string name="rating_play_store_redirect_message_line_1">Awesome! Thank you for the 5 stars</string>
+    <string name="rating_play_store_redirect_message_line_2">Please help others, in knowing some good things about this app.</string>
+    <string name="later">Later</string>
+    <string name="submit">Submit</string>
+    <string name="rating_play_store_text">Rate us on Play Store</string>
+    <string name="rating_submitted_successfully">Rating submitted successfully</string>
+
+    <string name="facebook_app_id">278680103059166</string>
+    <string name="fb_login_protocol_scheme">fb278680103059166</string>
+
+    <string name="error_message_no_more_space">
+        Your storage is unavailable.
+    </string>
+    <string name="error_message_insufficient_space">
+        You have few space available, please make sure your have more than 5MB on disk to
+        take pictures!
+    </string>
+    <string name="ok">Ok</string>
+    <string name="error_message">Error occurred!</string>
+    <string name="message_need_permission">Need Permissions</string>
+    <string name="message_grant_permission">This app needs permission to use this feature. You can grant them in app
+        settings.
+    </string>
+    <string name="label_setting">GOTO SETTINGS</string>
+    <string name="cancel">Cancel</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_gallery">Choose from Gallery</string>
+
+
 </resources>
