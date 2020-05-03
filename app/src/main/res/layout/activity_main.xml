@@ -19,11 +19,12 @@
             app:navGraph="@navigation/main_graph" />
 
         <com.example.healthassistant.design.CurvedBottomNavigationView
-            android:id="@+id/mBottomNavigationView"
-            android:layout_width="match_parent"
+            android:id="@+id/bottom_navigation_view"
+            style="@style/BottomNavigationView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-20dp"
-            android:foregroundTint="@color/white"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -31,7 +32,7 @@
         </com.example.healthassistant.design.CurvedBottomNavigationView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mainFab"
+            android:id="@+id/main_fab_btn"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginBottom="36dp"
@@ -39,9 +40,9 @@
             android:scaleType="center"
             android:src="@drawable/blur_icon2"
             app:fabCustomSize="60dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mBottomNavigationView"
-            app:layout_constraintEnd_toEndOf="@+id/mBottomNavigationView"
-            app:layout_constraintStart_toStartOf="@+id/mBottomNavigationView"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation_view"
+            app:layout_constraintEnd_toEndOf="@+id/bottom_navigation_view"
+            app:layout_constraintStart_toStartOf="@+id/bottom_navigation_view"
             app:maxImageSize="36dp"
             app:tint="@null" />
 

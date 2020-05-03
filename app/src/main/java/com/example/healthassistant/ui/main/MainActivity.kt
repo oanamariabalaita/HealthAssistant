@@ -1,11 +1,18 @@
 package com.example.healthassistant.ui.main
 
+import android.content.Context
+import android.util.AttributeSet
+import android.view.View
+import androidx.databinding.adapters.TextViewBindingAdapter.setTextSize
+import com.example.healthassistant.R
 import com.example.healthassistant.databinding.ActivityMainBinding
 import com.github.mustafaozhan.basemob.activity.BaseVBActivity
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.activity_main.mBottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.bottom_navigation_view
+import kotlinx.android.synthetic.main.activity_main.main_fab_btn
 import javax.inject.Inject
 
 class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
@@ -19,19 +26,33 @@ class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
         binding = ActivityMainBinding.inflate(layoutInflater)
     }
 
+    override fun onStart() {
+        super.onStart()
 
-    private fun setDash() = mBottomNavigationView.apply {
-        //        inflateMenu(R.menu.bottom_menu)
-//        enableAnimation(false)
-//        labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-//        setTextSize(10.0f)
-//        setIconsMarginTop(16)
-//        itemTextColor = ColorStateList.valueOf(Color.WHITE)
-//        setIconSize(32.0F, 32.0F)
-//        getBottomNavigationItemView(1).background = null
-//        getBottomNavigationItemView(2).background = null
-//        getBottomNavigationItemView(3).background = null
-//        getBottomNavigationItemView(2).isClickable = false
+        setListeners()
+        setDash()
+    }
+
+    private fun setListeners() {
+        main_fab_btn.setOnClickListener {
+
+        }
+        main_fab_btn.setOnLongClickListener {
+
+            true
+        }
+
+        bottom_navigation_view.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+
+            }
+            true
+        }
+    }
+
+    private fun setDash() = bottom_navigation_view.apply {
+        inflateMenu(R.menu.bottom_menu)
+        labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
     }
 
 }

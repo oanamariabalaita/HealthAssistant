@@ -19,5 +19,6 @@
     <dimen name="ic_album_overflow_margin_top">10dp</dimen>
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="profile_radius_small">30dp</dimen>
 
 </resources>
