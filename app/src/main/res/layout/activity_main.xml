@@ -46,25 +46,6 @@
             app:maxImageSize="36dp"
             app:tint="@null" />
 
-        <FrameLayout
-            android:id="@+id/debug_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.4"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <TextView
-                android:id="@+id/debug_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.4"
-                android:textColor="@android:color/black"
-                tools:text="DEBUG" />
-
-        </FrameLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -1,9 +1,4 @@
 package com.example.healthassistant.ui.main
-
-import android.content.Context
-import android.util.AttributeSet
-import android.view.View
-import androidx.databinding.adapters.TextViewBindingAdapter.setTextSize
 import com.example.healthassistant.R
 import com.example.healthassistant.databinding.ActivityMainBinding
 import com.github.mustafaozhan.basemob.activity.BaseVBActivity
@@ -54,5 +49,4 @@ class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
         inflateMenu(R.menu.bottom_menu)
         labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
     }
-
 }

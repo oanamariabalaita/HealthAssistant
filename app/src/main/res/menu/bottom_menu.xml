@@ -6,14 +6,12 @@
     <item
         android:id="@+id/action_account"
         android:icon="@drawable/baseline_account_circle_24"
-        android:title="Profile"
-
-        />
+        android:title="@string/bottom_menu_profile" />
 
     <item
         android:id="@+id/action_reports"
         android:icon="@drawable/baseline_equalizer_24"
-        android:title="Statistics" />
+        android:title="@string/bottom_menu_statistics" />
 
     <item
         android:id="@+id/empty"
@@ -22,11 +20,11 @@
     <item
         android:id="@+id/action_notifications"
         android:icon="@drawable/baseline_notifications_24"
-        android:title="Notifications" />
+        android:title="@string/bottom_menu_notifications" />
 
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/baseline_settings_white_24"
-        android:title="Settings" />
+        android:icon="@drawable/baseline_ic_settings_24dp"
+        android:title="@string/bottom_menu_settings" />
 
 </menu>
