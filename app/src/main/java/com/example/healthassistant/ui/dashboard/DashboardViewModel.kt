@@ -27,7 +27,7 @@ class DashboardViewModel @Inject constructor() :
     override fun getEvent() = this as DashboardEvent
     // endregion
 
-    // region Event
+    // region EVENT
 
     // endregion
 }
