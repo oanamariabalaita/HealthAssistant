@@ -38,4 +38,16 @@
     <color name="orange">#FFA500</color>
     <color name="yellow">#fff44f</color>
 
+    <!--Intro-->
+
+    <color name="intro_background">#0E1211</color>
+
+    <color name="color_intro_page1">#A271F2</color>
+    <color name="color_intro_page2">#CC3CB2E2</color>
+    <color name="color_intro_page3">#222A7C</color>
+
+    <color name="text_color_intro_page1">#f1f1f1</color>
+    <color name="text_color_intro_page2">#f1f1f1</color>
+    <color name="text_color_intro_page3">#f1f1f1</color>
+
 </resources>

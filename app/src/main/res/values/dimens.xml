@@ -20,5 +20,10 @@
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
     <dimen name="profile_radius_small">30dp</dimen>
+    <dimen name="intro_bubble_item_size">380dp</dimen>
+    <dimen name="intro_bubble_item_size_xlarge">380dp</dimen>
+    <dimen name="intro_bubble_item_size_large">100dp</dimen>
+    <dimen name="intro_bubble_item_size_medium">90dp</dimen>
+    <dimen name="intro_bubble_item_size_small">60dp</dimen>
 
 </resources>
