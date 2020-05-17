@@ -11,6 +11,16 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface UserApiService {
+    companion object {
+        private const val PREFIX = "profile/"
+        private const val GET_USER_INFO = "$PREFIX/info"
+        private const val GET_USER_INFO_DETAILS = "$PREFIX/details"
+        private const val PUT_USER_PHOTO = "$PREFIX/photo"
+        private const val PUT_USER_INFO_DETAILS = "$PREFIX/details"
+    }
+
+    @GET(GET_USER_INFO)
+    suspend fun getCustomerInfo(): User
 
     @GET("users")
     fun getAllUsers(): Observable<List<User>>

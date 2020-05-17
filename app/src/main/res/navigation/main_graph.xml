@@ -9,7 +9,23 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.healthassistant.ui.dashboard.DashboardFragment"
         android:label="DashboardFragment"
-        tools:layout="@layout/dashboard_fragment"></fragment>
+        tools:layout="@layout/dashboard_fragment" />
+
+    <action
+        android:id="@+id/action_global_to_profileFragment"
+        app:destination="@id/profileFragment" />
+
+    <action
+        android:id="@+id/action_global_to_settingsFragment"
+        app:destination="@id/settingsFragment" />
+
+    <action
+        android:id="@+id/action_global_to_notificationsFragment"
+        app:destination="@id/notificationsFragment" />
+
+    <action
+        android:id="@+id/action_global_to_statisticsFragment"
+        app:destination="@id/statisticsFragment" />
 
     <fragment
         android:id="@+id/profileFragment"
@@ -30,7 +46,7 @@
         tools:layout="@layout/statistics_fragment" />
 
     <fragment
-        android:id="@+id/notificactionsFragment"
+        android:id="@+id/notificationsFragment"
         android:name="com.example.healthassistant.ui.notifications.NotificationsFragment"
         android:label="NotificationsFragment"
         tools:layout="@layout/notifications_fragment" />
