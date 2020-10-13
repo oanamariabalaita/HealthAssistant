@@ -38,7 +38,7 @@
             android:layout_marginBottom="36dp"
             android:backgroundTint="@color/colorPrimaryDark"
             android:scaleType="center"
-            android:src="@drawable/blur_icon2"
+            android:src="@drawable/ic_glide_error"
             app:fabCustomSize="60dp"
             app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation_view"
             app:layout_constraintEnd_toEndOf="@+id/bottom_navigation_view"

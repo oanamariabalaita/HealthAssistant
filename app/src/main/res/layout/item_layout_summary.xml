@@ -31,7 +31,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="7dp"
                     android:background="@drawable/background_circle"
-                    android:src="@drawable/profile"
+                    android:src="@drawable/ic_glide_error"
                     app:imageRadius="@{@dimen/profile_radius_small}"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
                     android:layout_height="22dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/icon_menu2"
+                    android:background="@drawable/ic_glide_error"
                     android:clickable="true"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />

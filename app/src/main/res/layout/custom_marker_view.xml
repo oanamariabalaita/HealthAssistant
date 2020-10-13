@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="25dp"
     android:layout_height="25dp"
-    android:background="@drawable/marker2"
+    android:background="@drawable/ic_glide_error"
     tools:ignore="Overdraw">
 
     <TextView

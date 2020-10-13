@@ -15,5 +15,8 @@ interface AssetsService {
 
     @Multipart
     @POST(POST_ASSET)
-    suspend fun postFileAsset(@Path("assetKey") key: String, @Part file: MultipartBody.Part): FileResponse
+    suspend fun postFileAsset(
+        @Path("assetKey") key: String,
+        @Part file: MultipartBody.Part
+    ): FileResponse
 }

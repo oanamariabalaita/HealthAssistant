@@ -4,7 +4,7 @@
     android:id="@+id/radar_makerview"
     android:layout_width="20dp"
     android:layout_height="15dp"
-    android:background="@drawable/radar_marker"
+    android:background="@drawable/ic_glide_error"
     android:orientation="vertical"
     tools:ignore="Overdraw">
 
