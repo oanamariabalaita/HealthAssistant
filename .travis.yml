@@ -81,5 +81,4 @@ cache:
     - $HOME/.gradle/wrapper/\
 
 notifications:
-  slack:
-    secure: h4fff78A7TWyyS8xCd+Q5LVOM5dcKRw8TIUS3P8xoL8Gxu8Z8ym+2zkqZPRRW3OtlYQcsQ/TRU4r5fKpAHcL47ce82lOs2YyTrZd98tVLJMQBpTz7QqXjcZ4SDOTOE6W0OdtDUm5+Bah2+38f1CBUoTdwtjCAfag/73H1P29Grejs2ldlThoHCV7M4BC5xcC0pXKrcnBGbA6c0lulw6p8bx0e6oIbysE8$
+  slack: kiss-personal:QhUQXyH7zfjiEJBP2SBMO5uN
