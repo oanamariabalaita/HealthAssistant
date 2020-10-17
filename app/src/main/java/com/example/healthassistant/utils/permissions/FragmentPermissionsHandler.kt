@@ -14,7 +14,7 @@ class FragmentPermissionsHandler @Inject constructor() {
 
         permissionHandler.getPermissions().forEach { p ->
             val granted = ContextCompat.checkSelfPermission(
-                fragment.context!!,
+                fragment.requireContext(),
                 p
             ) == PackageManager.PERMISSION_GRANTED
             hasPermissions = hasPermissions.and(granted)

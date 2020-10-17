@@ -1,6 +1,6 @@
 package com.example.healthassistant.app
 
-import androidx.multidex.MultiDexApplication
+import android.app.Application
 import com.example.healthassistant.BuildConfig
 import com.example.healthassistant.di.components.DaggerAppComponent
 import com.facebook.stetho.Stetho
@@ -10,7 +10,7 @@ import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class App : MultiDexApplication(), HasAndroidInjector {
+class App : Application(), HasAndroidInjector {
 
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
