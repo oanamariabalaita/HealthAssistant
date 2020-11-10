@@ -2,21 +2,30 @@ package com.example.healthassistant.design
 
 import android.content.Context
 import android.graphics.Typeface
+import android.view.LayoutInflater
+import android.view.View
+import com.example.healthassistant.R
+import com.example.healthassistant.databinding.RadarMarkerviewBinding
 import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
-import kotlinx.android.synthetic.main.radar_markerview.view.tvContent
 
 class RadarMarkerView(context: Context, layoutResource: Int) : MarkerView(context, layoutResource) {
 
+    private lateinit var viewBinding: RadarMarkerviewBinding
+
     init {
-        tvContent.typeface = Typeface.createFromAsset(context.assets, "OpenSans-Light.ttf")
+        val viewBinding = RadarMarkerviewBinding
+            .inflate(LayoutInflater.from(context))
+        View.inflate(context, R.layout.intro_layout_bubble_item, viewBinding.root)
+
+        viewBinding.tvContent.typeface =
+            Typeface.createFromAsset(context.assets, "OpenSans-Light.ttf")
     }
 
     override fun refreshContent(e: Entry, highlight: Highlight) {
-
-        tvContent.text = (e.y).toInt().toString()
+        viewBinding.tvContent.text = (e.y).toInt().toString()
         super.refreshContent(e, highlight)
     }
 

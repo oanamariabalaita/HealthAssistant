@@ -11,14 +11,11 @@ import android.widget.Button
 import android.widget.FrameLayout
 import androidx.fragment.app.DialogFragment
 import com.example.healthassistant.R
-import kotlinx.android.synthetic.main.intro_fragment.indicatorsContainer
-import kotlinx.android.synthetic.main.intro_fragment.navContainer
-import kotlinx.android.synthetic.main.intro_fragment.next
-import kotlinx.android.synthetic.main.intro_fragment.previous
-import kotlinx.android.synthetic.main.intro_motion_layout.motionLayout
+import com.example.healthassistant.databinding.IntroFragmentBinding
 
 class IntroFragment : DialogFragment() {
 
+    private lateinit var viewBinding: IntroFragmentBinding
     private val indicators = mutableListOf<View>()
     private var currentPosition = 0
 
@@ -27,7 +24,8 @@ class IntroFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.intro_fragment, container, false)
+        viewBinding = IntroFragmentBinding.inflate(inflater, container, false)
+        return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,28 +36,28 @@ class IntroFragment : DialogFragment() {
     }
 
     private fun attachNextButtonListener() {
-        next.setOnClickListener {
+        viewBinding.next.setOnClickListener {
             when (currentPosition) {
-                0 -> next.navigate(R.id.firstTransition, R.id.secondTransition)
-                1 -> next.navigate(R.id.secondTransition, R.id.thirdTransition)
+                0 -> viewBinding.next.navigate(R.id.firstTransition, R.id.secondTransition)
+                1 -> viewBinding.next.navigate(R.id.secondTransition, R.id.thirdTransition)
                 else -> dismiss()
             }
         }
     }
 
     private fun attachPreviousButtonListener() {
-        previous.setOnClickListener {
+        viewBinding.previous.setOnClickListener {
             when (currentPosition) {
-                2 -> previous.navigate(R.id.thirdTransition, R.id.secondTransition)
-                else -> previous.navigate(R.id.secondTransition, R.id.firstTransition)
+                2 -> viewBinding.previous.navigate(R.id.thirdTransition, R.id.secondTransition)
+                else -> viewBinding.previous.navigate(R.id.secondTransition, R.id.firstTransition)
             }
         }
     }
 
     private fun updateNavState() {
         when {
-            currentPosition > 0 -> previous.visibility = View.VISIBLE
-            else -> previous.visibility = View.INVISIBLE
+            currentPosition > 0 -> viewBinding.previous.visibility = View.VISIBLE
+            else -> viewBinding.previous.visibility = View.INVISIBLE
         }
     }
 
@@ -70,14 +68,14 @@ class IntroFragment : DialogFragment() {
         }
         updateNavState()
         if (endId == R.id.thirdTransition) {
-            navContainer.setBackgroundColor(resources.getColor(R.color.color_intro_page3))
-            next.text = "COMPLETE"
+            viewBinding.navContainer.setBackgroundColor(resources.getColor(R.color.color_intro_page3))
+            viewBinding.next.text = "COMPLETE"
         } else {
-            next.text = "NEXT"
-            navContainer.setBackgroundColor(resources.getColor(R.color.intro_background))
+            viewBinding.next.text = "NEXT"
+            viewBinding.navContainer.setBackgroundColor(resources.getColor(R.color.intro_background))
         }
-        motionLayout.setTransition(startId, endId)
-        motionLayout.transitionToEnd()
+        viewBinding.motionLayout.motionLayout.setTransition(startId, endId)
+        viewBinding.motionLayout.motionLayout.transitionToEnd()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             updateIndicators()
         }
@@ -99,7 +97,7 @@ class IntroFragment : DialogFragment() {
         val dotRadius: Int = convertDpToPixel(12f, context)
         val margin: Int = convertDpToPixel(4f, context)
         indicators.clear()
-        indicatorsContainer.removeAllViews()
+        viewBinding.indicatorsContainer.removeAllViews()
         for (i in 0 until 3) {
             val view = View(context)
             view.id = View.generateViewId()
@@ -107,7 +105,7 @@ class IntroFragment : DialogFragment() {
             layoutParams.setMargins(margin, margin, margin, margin)
             view.layoutParams = layoutParams
             indicators.add(view)
-            indicatorsContainer.addView(view)
+            viewBinding.indicatorsContainer.addView(view)
         }
     }
 

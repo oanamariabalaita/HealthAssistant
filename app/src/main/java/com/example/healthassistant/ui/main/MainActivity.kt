@@ -12,8 +12,6 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import kotlinx.android.synthetic.main.activity_main.bottom_navigation_view
-import kotlinx.android.synthetic.main.activity_main.main_fab_btn
 import javax.inject.Inject
 
 class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
@@ -42,19 +40,14 @@ class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
     }
 
     private fun setListeners() {
-        main_fab_btn.setOnClickListener {
-
+        binding.mainFabBtn.setOnClickListener {
         }
-        main_fab_btn.setOnLongClickListener {
+        binding.mainFabBtn.setOnLongClickListener {
 
             true
         }
 
-        bottom_navigation_view.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-
-            }
-
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             val options = NavOptions.Builder()
                 .setLaunchSingleTop(true)
                 .setEnterAnim(R.anim.nav_default_enter_anim)
@@ -66,16 +59,14 @@ class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
 
             try {
                 navController.navigate(item.itemId, null, options)
-                true
             } catch (e: IllegalArgumentException) {
-                false
+                return@setOnNavigationItemSelectedListener false
             }
-
             true
         }
     }
 
-    private fun setDash() = bottom_navigation_view.apply {
+    private fun setDash() = binding.bottomNavigationView.apply {
         inflateMenu(R.menu.bottom_menu)
         labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
     }
@@ -89,7 +80,6 @@ class MainActivity : BaseVBActivity<ActivityMainBinding>(), HasAndroidInjector {
                 navController.popBackStack(R.id.nav_graph, false) // Clear entire back stack
             }
             RedirectType.DASHBOARD -> {
-
             }
         }
     }

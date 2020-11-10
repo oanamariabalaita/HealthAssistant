@@ -7,6 +7,7 @@
     android:background="#A5E1D2">
 
     <include
+        android:id="@+id/motion_layout"
         layout="@layout/intro_motion_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
