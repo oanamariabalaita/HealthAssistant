@@ -90,6 +90,11 @@ dependencies {
         // Coroutines
         implementation(coroutines)
         implementation(coroutinesCore)
+
+        // Test
+        testImplementation(jUnit)
+        testImplementation(mockK)
+        testImplementation(coroutinesTest)
     }
 
     with(Annotations) {
@@ -97,11 +102,5 @@ dependencies {
         kapt(daggerProcessor)
         kapt(moshi)
         kapt(room)
-    }
-
-    with(TestDependencies) {
-        testImplementation(jUnit)
-        testImplementation(mockK)
-        testImplementation(coroutinesTest)
     }
 }
