@@ -1,17 +1,10 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#ECE9E9">
-
-    <data>
-
-        <variable
-            name="vm"
-            type="com.example.healthassistant.ui.dashboard.DashboardViewModel" />
-
-        <variable
-            name="event"
-            type="com.example.healthassistant.ui.dashboard.structure.DashboardEvent" />
-    </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -40,4 +33,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

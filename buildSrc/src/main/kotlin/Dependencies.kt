@@ -20,9 +20,9 @@ object Dependencies {
     const val daggerAndroidSupport =
         "com.google.dagger:dagger-android-support:${Versions.daggerVersion}"
     const val dagger = "com.google.dagger:dagger:${Versions.daggerVersion}"
-    const val baseClasses = "com.github.SUB-MOB:basemob:${Versions.baseVersion}"
+    const val scopeMob = "com.github.SUB-MOB:scopemob:${Versions.scopeMobVersion}"
 
-    //LiveData
+    //Lifecycle
     const val lifecycleExtensions =
         "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifecycleVersion}"
     const val lifecycleViewModel =
@@ -31,15 +31,20 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidxLifecycleVersion}"
     const val lifecycleRuntime =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidxLifecycleVersion}"
+    const val lifecycleCommon =
+        "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycleVersion}"
 
     // Networking
-    const val moshi = "com.squareup.moshi:moshi:${Versions.moshiVersion}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val retrofitConverter =
         "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
     const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttpVersion}"
     const val okhttpInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpVersion}"
+    const val kotlinSerialization =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinSerialization}"
+    const val kotlinSerializationConverter =
+        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.kotlinSerializationConverter}"
 
     // Tools
     const val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"

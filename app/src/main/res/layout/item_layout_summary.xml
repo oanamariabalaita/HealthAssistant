@@ -1,229 +1,225 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools">
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainCardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_gravity="center"
+        android:focusable="true"
+        card_view:cardCornerRadius="@dimen/card_album_radius"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/mainCardView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:focusable="true"
-            card_view:cardCornerRadius="@dimen/card_album_radius"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
+                android:id="@+id/photo_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/background_circle"
+                android:src="@drawable/ic_glide_error"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.github.mikephil.charting.charts.RadarChart
+                android:id="@+id/chart_summary"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintStart_toEndOf="@+id/txt_name"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/photo_image"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/background_circle"
-                    android:src="@drawable/ic_glide_error"
-                    app:imageRadius="@{@dimen/profile_radius_small}"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/btn_menu"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/ic_glide_error"
+                android:clickable="true"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
-                <com.github.mikephil.charting.charts.RadarChart
-                    android:id="@+id/chart_summary"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
-                    card_view:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintStart_toEndOf="@+id/txt_name"
-                    card_view:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Balaita Oana"
+                android:textColor="@color/dark_gray"
+                android:textSize="13sp"
+                card_view:layout_constraintStart_toEndOf="@+id/profile_image"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btn_menu"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/ic_glide_error"
-                    android:clickable="true"
-                    card_view:layout_constraintEnd_toEndOf="parent"
-                    card_view:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="2dp"
+                android:text="12/05/2019"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp"
+                card_view:layout_constraintStart_toEndOf="@+id/profile_image"
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-                <TextView
-                    android:id="@+id/txt_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Balaita Oana"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="13sp"
-                    card_view:layout_constraintStart_toEndOf="@+id/profile_image"
-                    card_view:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txt_description_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="15dp"
+                android:text="Health Score:"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-                <TextView
-                    android:id="@+id/txt_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="2dp"
-                    android:text="12/05/2019"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="11sp"
-                    card_view:layout_constraintStart_toEndOf="@+id/profile_image"
-                    card_view:layout_constraintTop_toBottomOf="@+id/txt_name" />
+            <TextView
+                android:id="@+id/txt_health_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/circular_score"
+                android:gravity="center"
+                android:padding="17dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="27sp"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_description_score" />
 
-                <TextView
-                    android:id="@+id/txt_description_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Health Score:"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="10sp"
-                    card_view:layout_constraintStart_toStartOf="parent"
-                    card_view:layout_constraintTop_toBottomOf="@+id/profile_image" />
+            <TextView
+                android:id="@+id/txt_trend_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Trend: "
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_health_score" />
 
-                <TextView
-                    android:id="@+id/txt_health_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/circular_score"
-                    android:gravity="center"
-                    android:padding="17dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="27sp"
-                    card_view:layout_constraintStart_toStartOf="parent"
-                    card_view:layout_constraintTop_toBottomOf="@+id/txt_description_score" />
+            <TextView
+                android:id="@+id/txt_avg_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Average: "
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_trend_score" />
 
-                <TextView
-                    android:id="@+id/txt_trend_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Trend: "
-                    android:textColor="@color/dark_gray"
-                    android:textSize="10sp"
-                    card_view:layout_constraintStart_toStartOf="parent"
-                    card_view:layout_constraintTop_toBottomOf="@+id/txt_health_score" />
+            <TextView
+                android:id="@+id/txt_trend_score_v"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="8dp"
+                android:text="ASCENDING"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                card_view:layout_constraintStart_toEndOf="@+id/txt_trend_score"
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_health_score" />
 
-                <TextView
-                    android:id="@+id/txt_avg_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="Average: "
-                    android:textColor="@color/dark_gray"
-                    android:textSize="10sp"
-                    card_view:layout_constraintStart_toStartOf="parent"
-                    card_view:layout_constraintTop_toBottomOf="@+id/txt_trend_score" />
+            <TextView
+                android:id="@+id/txt_avg_score_v"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:text="65"
+                android:textColor="@color/dark_gray"
+                android:textSize="10sp"
+                card_view:layout_constraintStart_toEndOf="@+id/txt_avg_score"
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_trend_score_v"
 
-                <TextView
-                    android:id="@+id/txt_trend_score_v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="8dp"
-                    android:text="ASCENDING"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="10sp"
-                    card_view:layout_constraintStart_toEndOf="@+id/txt_trend_score"
-                    card_view:layout_constraintTop_toBottomOf="@+id/txt_health_score" />
+                />
 
-                <TextView
-                    android:id="@+id/txt_avg_score_v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:text="65"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="10sp"
-                    card_view:layout_constraintStart_toEndOf="@+id/txt_avg_score"
-                    card_view:layout_constraintTop_toBottomOf="@+id/txt_trend_score_v"
-
-                    />
-
-                <View
-                    android:id="@+id/img_past_label"
-                    android:layout_width="9dp"
-                    android:layout_height="9dp"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:alpha="0.6"
-                    android:background="@drawable/square_background_past"
-                    card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
-                    card_view:layout_constraintEnd_toStartOf="@+id/txt_past_label" />
+            <View
+                android:id="@+id/img_past_label"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="5dp"
+                android:alpha="0.6"
+                android:background="@drawable/square_background_past"
+                card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
+                card_view:layout_constraintEnd_toStartOf="@+id/txt_past_label" />
 
 
-                <TextView
-                    android:id="@+id/txt_past_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="13dp"
-                    android:layout_marginRight="13dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="Last Week"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="9sp"
-                    android:textStyle="italic"
-                    card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
-                    card_view:layout_constraintEnd_toStartOf="@+id/img_present_label" />
+            <TextView
+                android:id="@+id/txt_past_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginBottom="5dp"
+                android:text="Last Week"
+                android:textColor="@color/dark_gray"
+                android:textSize="9sp"
+                android:textStyle="italic"
+                card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
+                card_view:layout_constraintEnd_toStartOf="@+id/img_present_label" />
 
-                <View
-                    android:id="@+id/img_present_label"
-                    android:layout_width="9dp"
-                    android:layout_height="9dp"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginBottom="5dp"
-                    android:alpha="0.6"
-                    android:background="@drawable/square_backgroud_present"
-                    card_view:layout_constraintBottom_toBottomOf="parent"
-                    card_view:layout_constraintEnd_toStartOf="@+id/txt_present_label" />
-
-
-                <TextView
-                    android:id="@+id/txt_present_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="This Week"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="9sp"
-                    android:textStyle="italic"
-                    card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
-                    card_view:layout_constraintEnd_toEndOf="@+id/chart_summary" />
+            <View
+                android:id="@+id/img_present_label"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="5dp"
+                android:alpha="0.6"
+                android:background="@drawable/square_backgroud_present"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toStartOf="@+id/txt_present_label" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txt_present_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:text="This Week"
+                android:textColor="@color/dark_gray"
+                android:textSize="9sp"
+                android:textStyle="italic"
+                card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
+                card_view:layout_constraintEnd_toEndOf="@+id/chart_summary" />
 
-        </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</layout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

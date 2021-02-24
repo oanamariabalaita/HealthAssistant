@@ -2,7 +2,7 @@ plugins {
     with(Plugins) {
         id(application)
         id(safeargs)
-        id(versions) version Versions.versionsVersion
+        id(serialization)
         kotlin(android)
         kotlin(kapt)
     }
@@ -53,7 +53,7 @@ dependencies {
         implementation(rxAndroid)
         implementation(workManagerRx)
         implementation(workManager)
-        implementation(baseClasses)
+        implementation(scopeMob)
 
         // UI
         implementation(androidMaterial)
@@ -71,7 +71,8 @@ dependencies {
         implementation(retrofitConverter)
         implementation(okhttp)
         implementation(okhttpInterceptor)
-        implementation(moshi)
+        implementation(kotlinSerialization)
+        implementation(kotlinSerializationConverter)
 
         // Local DB
         implementation(room)
@@ -81,7 +82,8 @@ dependencies {
         implementation(navigation)
         implementation(navigationUi)
 
-        // LiveData
+        // Lifecycle
+        implementation(lifecycleCommon)
         implementation(lifecycleExtensions)
         implementation(lifecycleLiveData)
         implementation(lifecycleRuntime)
@@ -100,7 +102,6 @@ dependencies {
     with(Annotations) {
         kapt(daggerCompiler)
         kapt(daggerProcessor)
-        kapt(moshi)
         kapt(room)
     }
 }

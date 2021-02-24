@@ -1,3 +1,10 @@
+plugins {
+    with(Plugins) {
+        id(dependencyAnalysis) version Versions.dependencyAnalysis
+        id(versions) version Versions.versionsVersion
+    }
+}
+
 buildscript {
     repositories {
         google()
@@ -9,6 +16,7 @@ buildscript {
             classpath(androidBuildTools)
             classpath(kotlinGradlePlugin)
             classpath(navigation)
+            classpath(serialization)
         }
     }
 }

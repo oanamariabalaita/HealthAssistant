@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.healthassistant.ui.dashboard.DashboardFragment"
+        android:name="com.example.healthassistant.presentation.features.dashboard.DashboardFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/dashboard_fragment" />
 
@@ -29,31 +29,31 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.healthassistant.ui.profile.ProfileFragment"
+        android:name="com.example.healthassistant.presentation.features.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/profile_fragment" />
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.healthassistant.ui.settings.SettingsFragment"
+        android:name="com.example.healthassistant.presentation.features.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/settings_fragment" />
 
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.healthassistant.ui.statistics.StatisticsFragment"
+        android:name="com.example.healthassistant.presentation.features.statistics.StatisticsFragment"
         android:label="StatisticsFragment"
         tools:layout="@layout/statistics_fragment" />
 
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.healthassistant.ui.notifications.NotificationsFragment"
+        android:name="com.example.healthassistant.presentation.features.notifications.NotificationsFragment"
         android:label="NotificationsFragment"
         tools:layout="@layout/notifications_fragment" />
 
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.example.healthassistant.ui.intro.IntroFragment"
+        android:name="com.example.healthassistant.presentation.features.intro.IntroFragment"
         android:label="IntroFragment"
         tools:layout="@layout/intro_fragment" />
 

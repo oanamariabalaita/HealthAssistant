@@ -63,6 +63,20 @@
     <string name="bottom_menu_notifications">Notifications</string>
     <string name="bottom_menu_settings">Settings</string>
 
+    <!--DateAndTime-->
+    <string name="now">now</string>
+    <string name="a_minute_ago">a minute ago</string>
+    <string name="a_minute_ago_abbreviate">1 min</string>
+    <string name="minutes_ago">minutes ago</string>
+    <string name="minutes_ago_abbreviate">min</string>
+    <string name="an_hour_ago">an hour ago</string>
+    <string name="an_hour_ago_abbreviate">1 hr</string>
+    <string name="hours_ago">hours ago</string>
+    <string name="hours_ago_abbreviate">hrs</string>
+    <string name="yesterday">yesterday</string>
+    <string name="days_ago">days ago</string>
+    <string name="days_ago_abbreviate">days</string>
+
     <!--MOCKS-->
     <string name="heading_text">Neque porro quisquam est qui</string>
 

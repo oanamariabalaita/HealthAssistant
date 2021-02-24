@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <com.example.healthassistant.design.IntroBubbleItem
+    <com.example.healthassistant.presentation.utils.design.IntroBubbleItem
         android:id="@+id/firstBubble"
         android:layout_width="@dimen/intro_bubble_item_size_xlarge"
         android:layout_height="@dimen/intro_bubble_item_size_xlarge"
@@ -34,7 +34,7 @@
         app:layout_constraintCircleAngle="290"
         app:layout_constraintCircleRadius="90dp" />
 
-    <com.example.healthassistant.design.IntroBubbleItem
+    <com.example.healthassistant.presentation.utils.design.IntroBubbleItem
         android:id="@+id/secondBubble"
         android:layout_width="@dimen/intro_bubble_item_size_medium"
         android:layout_height="@dimen/intro_bubble_item_size_medium"
@@ -44,7 +44,7 @@
         app:layout_constraintCircleAngle="120"
         app:layout_constraintCircleRadius="160dp" />
 
-    <com.example.healthassistant.design.IntroBubbleItem
+    <com.example.healthassistant.presentation.utils.design.IntroBubbleItem
         android:id="@+id/thirdBubble"
         android:layout_width="@dimen/intro_bubble_item_size_small"
         android:layout_height="@dimen/intro_bubble_item_size_small"
