@@ -2,6 +2,6 @@
 <resources>
 
     <!-- Duration for slide transition animation -->
-    <integer name="slide">200</integer>
+    <integer name="slide_transition_duration">200</integer>
 
 </resources>

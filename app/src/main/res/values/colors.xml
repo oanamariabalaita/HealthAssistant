@@ -3,7 +3,6 @@
     <color name="colorPrimary">#45464D</color>
     <color name="colorPrimaryDark">#45464D</color>
     <color name="colorAccent">#000000</color>
-
     <color name="light_gray">#dbdbdb</color>
     <color name="gray">#7e7e7e</color>
     <color name="lightgray">#ededed</color>
@@ -18,9 +17,7 @@
     <color name="translucent_white">#88ffffff</color>
     <color name="fb">#3b5998</color>
     <color name="google">#d34836</color>
-
     <color name="orange_yello">#ffb300</color>
-
 
     <!--Design colors-->
     <color name="red_dark">#F06423</color>
@@ -39,13 +36,10 @@
     <color name="yellow">#fff44f</color>
 
     <!--Intro-->
-
     <color name="intro_background">#0E1211</color>
-
     <color name="color_intro_page1">#A271F2</color>
     <color name="color_intro_page2">#CC3CB2E2</color>
     <color name="color_intro_page3">#222A7C</color>
-
     <color name="text_color_intro_page1">#f1f1f1</color>
     <color name="text_color_intro_page2">#f1f1f1</color>
     <color name="text_color_intro_page3">#f1f1f1</color>

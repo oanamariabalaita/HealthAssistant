@@ -24,4 +24,5 @@
         android:layout_toEndOf="@+id/value"
         android:layout_toRightOf="@+id/value"
         app:srcCompat="@drawable/ic_face" />
+
 </RelativeLayout>

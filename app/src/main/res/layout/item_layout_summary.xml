@@ -158,9 +158,7 @@
                 android:textColor="@color/dark_gray"
                 android:textSize="10sp"
                 card_view:layout_constraintStart_toEndOf="@+id/txt_avg_score"
-                card_view:layout_constraintTop_toBottomOf="@+id/txt_trend_score_v"
-
-                />
+                card_view:layout_constraintTop_toBottomOf="@+id/txt_trend_score_v" />
 
             <View
                 android:id="@+id/img_past_label"
@@ -173,7 +171,6 @@
                 android:background="@drawable/square_background_past"
                 card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
                 card_view:layout_constraintEnd_toStartOf="@+id/txt_past_label" />
-
 
             <TextView
                 android:id="@+id/txt_past_label"
@@ -201,7 +198,6 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toStartOf="@+id/txt_present_label" />
 
-
             <TextView
                 android:id="@+id/txt_present_label"
                 android:layout_width="wrap_content"
@@ -216,7 +212,6 @@
                 android:textStyle="italic"
                 card_view:layout_constraintBottom_toBottomOf="@+id/chart_summary"
                 card_view:layout_constraintEnd_toEndOf="@+id/chart_summary" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

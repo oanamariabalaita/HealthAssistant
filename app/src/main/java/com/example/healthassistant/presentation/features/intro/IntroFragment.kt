@@ -9,11 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.example.healthassistant.R
 import com.example.healthassistant.databinding.IntroFragmentBinding
 
 class IntroFragment : DialogFragment() {
+
+    companion object {
+        private const val CIRCULAR_FRAMES_COUNT = 3
+    }
 
     private lateinit var viewBinding: IntroFragmentBinding
     private val indicators = mutableListOf<View>()
@@ -67,12 +72,22 @@ class IntroFragment : DialogFragment() {
             else -> currentPosition.dec()
         }
         updateNavState()
+
         if (endId == R.id.thirdTransition) {
-            viewBinding.navContainer.setBackgroundColor(resources.getColor(R.color.color_intro_page3))
-            viewBinding.next.text = "COMPLETE"
+            viewBinding.navContainer.setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.color_intro_page3
+                )
+            )
+            viewBinding.next.text = context.getString(R.string.next_step)
         } else {
-            viewBinding.next.text = "NEXT"
-            viewBinding.navContainer.setBackgroundColor(resources.getColor(R.color.intro_background))
+            viewBinding.next.text = context.getString(R.string.complete_step)
+            viewBinding.navContainer.setBackgroundColor(
+                ContextCompat.getColor(
+                    context, R.color.intro_background
+                )
+            )
         }
         viewBinding.motionContainer.motionLayout.setTransition(startId, endId)
         viewBinding.motionContainer.motionLayout.transitionToEnd()
@@ -83,12 +98,12 @@ class IntroFragment : DialogFragment() {
 
     private fun updateIndicators() {
         indicators.forEachIndexed { index, view ->
-            val background = when (index) {
+            val backgroundRes = when (index) {
                 currentPosition -> R.drawable.intro_selected_dot
                 else -> R.drawable.intro_unselected_dot
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                view.setBackgroundDrawable(context?.getDrawable(background))
+                view.setBackgroundResource(backgroundRes)
             }
         }
     }
@@ -98,7 +113,7 @@ class IntroFragment : DialogFragment() {
         val margin: Int = convertDpToPixel(4f, context)
         indicators.clear()
         viewBinding.indicatorsContainer.removeAllViews()
-        for (i in 0 until 3) {
+        for (i in 0 until CIRCULAR_FRAMES_COUNT) {
             val view = View(context)
             view.id = View.generateViewId()
             val layoutParams = FrameLayout.LayoutParams(dotRadius * 2, dotRadius * 2)

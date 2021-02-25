@@ -1,29 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="app_bar_height">0dp</dimen>
-    <dimen name="fab_size">48dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="item_offset">10dp</dimen>
-    <dimen name="detail_backdrop_height">250dp</dimen>
-    <dimen name="backdrop_title">30dp</dimen>
-    <dimen name="backdrop_subtitle">18dp</dimen>
-    <dimen name="card_album_radius">5dp</dimen>
-    <dimen name="album_cover_height">160dp</dimen>
-    <dimen name="album_title_padding">10dp</dimen>
-    <dimen name="album_title">15dp</dimen>
-    <dimen name="songs_count_padding_bottom">5dp</dimen>
-    <dimen name="songs_count">12dp</dimen>
-    <dimen name="ic_album_overflow_width">20dp</dimen>
-    <dimen name="ic_album_overflow_height">30dp</dimen>
-    <dimen name="ic_album_overflow_margin_top">10dp</dimen>
-    <dimen name="activity_horizontal_margin">8dp</dimen>
-    <dimen name="activity_vertical_margin">8dp</dimen>
-    <dimen name="profile_radius_small">30dp</dimen>
-    <dimen name="intro_bubble_item_size">380dp</dimen>
-    <dimen name="intro_bubble_item_size_xlarge">380dp</dimen>
-    <dimen name="intro_bubble_item_size_large">100dp</dimen>
-    <dimen name="intro_bubble_item_size_medium">90dp</dimen>
-    <dimen name="intro_bubble_item_size_small">60dp</dimen>
+    <dimen name="height_all_app_bar_0dp">0dp</dimen>
+    <dimen name="radius_dashboard_card_5dp">5dp</dimen>
+    <dimen name="margin_all_activity_horizontal_8dp">8dp</dimen>
+    <dimen name="margin_all_activity_vertical_8dp">8dp</dimen>
+
+    <!--Intro-->
+    <dimen name="size_intro_bubble_item_xlarge">380dp</dimen>
+    <dimen name="size_intro_bubble_item_large">100dp</dimen>
+    <dimen name="size_intro_bubble_item_medium">90dp</dimen>
+    <dimen name="size_intro_bubble_item_small">60dp</dimen>
 
 </resources>

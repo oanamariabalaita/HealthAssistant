@@ -26,8 +26,8 @@
 
     <com.example.healthassistant.presentation.utils.design.IntroBubbleItem
         android:id="@+id/firstBubble"
-        android:layout_width="@dimen/intro_bubble_item_size_xlarge"
-        android:layout_height="@dimen/intro_bubble_item_size_xlarge"
+        android:layout_width="@dimen/size_intro_bubble_item_xlarge"
+        android:layout_height="@dimen/size_intro_bubble_item_xlarge"
         android:background="@drawable/intro_bubble_background"
         android:backgroundTint="@color/color_intro_page1"
         app:layout_constraintCircle="@+id/centerPlaceholder"
@@ -36,8 +36,8 @@
 
     <com.example.healthassistant.presentation.utils.design.IntroBubbleItem
         android:id="@+id/secondBubble"
-        android:layout_width="@dimen/intro_bubble_item_size_medium"
-        android:layout_height="@dimen/intro_bubble_item_size_medium"
+        android:layout_width="@dimen/size_intro_bubble_item_medium"
+        android:layout_height="@dimen/size_intro_bubble_item_medium"
         android:background="@drawable/intro_bubble_background"
         android:backgroundTint="@color/color_intro_page2"
         app:layout_constraintCircle="@+id/centerPlaceholder"
@@ -46,11 +46,12 @@
 
     <com.example.healthassistant.presentation.utils.design.IntroBubbleItem
         android:id="@+id/thirdBubble"
-        android:layout_width="@dimen/intro_bubble_item_size_small"
-        android:layout_height="@dimen/intro_bubble_item_size_small"
+        android:layout_width="@dimen/size_intro_bubble_item_small"
+        android:layout_height="@dimen/size_intro_bubble_item_small"
         android:background="@drawable/intro_bubble_background"
         android:backgroundTint="@color/color_intro_page3"
         app:layout_constraintCircle="@+id/centerPlaceholder"
         app:layout_constraintCircleAngle="210"
         app:layout_constraintCircleRadius="240dp" />
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

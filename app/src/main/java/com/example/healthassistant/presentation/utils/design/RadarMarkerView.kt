@@ -24,9 +24,9 @@ class RadarMarkerView(context: Context, layoutResource: Int) : MarkerView(contex
             Typeface.createFromAsset(context.assets, "OpenSans-Light.ttf")
     }
 
-    override fun refreshContent(e: Entry, highlight: Highlight) {
-        viewBinding.tvContent.text = (e.y).toInt().toString()
-        super.refreshContent(e, highlight)
+    override fun refreshContent(entry: Entry, highlight: Highlight) {
+        viewBinding.tvContent.text = (entry.y).toInt().toString()
+        super.refreshContent(entry, highlight)
     }
 
     override fun getOffset(): MPPointF {

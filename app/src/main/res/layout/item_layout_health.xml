@@ -16,7 +16,7 @@
         android:layout_marginBottom="3dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        card_view:cardCornerRadius="@dimen/card_album_radius">
+        card_view:cardCornerRadius="@dimen/radius_dashboard_card_5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -66,9 +66,7 @@
                 android:layout_below="@id/txt_last"
                 android:layout_marginLeft="16dp"
                 android:text="--"
-                android:textSize="32sp"
-
-                />
+                android:textSize="32sp" />
 
             <TextView
                 android:id="@+id/last_value_unit"
@@ -96,9 +94,7 @@
                 android:id="@+id/chart_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/line"
-
-                />
+                android:layout_below="@id/line" />
 
         </RelativeLayout>
 

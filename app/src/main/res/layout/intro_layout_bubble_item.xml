@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/bubbleItemContainer"
-    android:layout_width="@dimen/intro_bubble_item_size"
-    android:layout_height="@dimen/intro_bubble_item_size"
+    android:layout_width="@dimen/size_intro_bubble_item_xlarge"
+    android:layout_height="@dimen/size_intro_bubble_item_xlarge"
     android:layout_gravity="center"
-    android:maxWidth="@dimen/intro_bubble_item_size"
-    android:maxHeight="@dimen/intro_bubble_item_size">
+    android:maxWidth="@dimen/size_intro_bubble_item_xlarge"
+    android:maxHeight="@dimen/size_intro_bubble_item_xlarge">
 
     <TextView
         android:id="@+id/bubbleItemTitle"

@@ -26,13 +26,13 @@ class LineChartMarkerView(context: Context, layoutResource: Int) :
             Typeface.createFromAsset(context.assets, "OpenSans-Light.ttf")
     }
 
-    override fun refreshContent(e: Entry, highlight: Highlight) {
-        if (e is CandleEntry) {
-            viewBinding.tvContentLine.text = Utils.formatNumber(e.high, 0, true)
+    override fun refreshContent(entry: Entry, highlight: Highlight) {
+        if (entry is CandleEntry) {
+            viewBinding.tvContentLine.text = Utils.formatNumber(entry.high, 0, true)
         } else {
-            viewBinding.tvContentLine.text = Utils.formatNumber(e.y, 0, true)
+            viewBinding.tvContentLine.text = Utils.formatNumber(entry.y, 0, true)
         }
-        super.refreshContent(e, highlight)
+        super.refreshContent(entry, highlight)
     }
 
     override fun getOffset(): MPPointF {
