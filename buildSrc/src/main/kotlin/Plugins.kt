@@ -1,3 +1,4 @@
+@Suppress("SpellCheckingInspection")
 object Plugins {
     const val application = "com.android.application"
     const val versions = "com.github.ben-manes.versions"
@@ -6,5 +7,4 @@ object Plugins {
     const val kapt = "kapt"
     const val serialization = "kotlinx-serialization"
     const val dependencyAnalysis = "com.autonomousapps.dependency-analysis"
-
 }
