@@ -3,12 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/introFragment">
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.healthassistant.ui.dashboard.DashboardFragment"
+        android:name="com.example.healthassistant.presentation.features.dashboard.DashboardFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/dashboard_fragment" />
+
+    <action
+        android:id="@+id/action_global_to_profileFragment"
+        app:destination="@id/profileFragment" />
+
+    <action
+        android:id="@+id/action_global_to_settingsFragment"
+        app:destination="@id/settingsFragment" />
+
+    <action
+        android:id="@+id/action_global_to_notificationsFragment"
+        app:destination="@id/notificationsFragment" />
+
+    <action
+        android:id="@+id/action_global_to_statisticsFragment"
+        app:destination="@id/statisticsFragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.healthassistant.presentation.features.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/profile_fragment" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.healthassistant.presentation.features.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/settings_fragment" />
+
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.healthassistant.presentation.features.statistics.StatisticsFragment"
+        android:label="StatisticsFragment"
+        tools:layout="@layout/statistics_fragment" />
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.healthassistant.presentation.features.notifications.NotificationsFragment"
+        android:label="NotificationsFragment"
+        tools:layout="@layout/notifications_fragment" />
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.example.healthassistant.presentation.features.intro.IntroFragment"
+        android:label="IntroFragment"
+        tools:layout="@layout/intro_fragment" />
 
 </navigation>

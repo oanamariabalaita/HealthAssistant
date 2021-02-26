@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_account"
+        android:icon="@drawable/bottom_bar_profile_selector"
+        android:title="@string/bottom_menu_profile" />
+
+    <item
+        android:id="@+id/action_reports"
+        android:icon="@drawable/bottom_bar_statistics_selector"
+        android:title="@string/bottom_menu_statistics" />
+
+    <item
+        android:id="@+id/empty"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/bottom_bar_notifications_selector"
+        android:title="@string/bottom_menu_notifications" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/bottom_bar_settings_selector"
+        android:title="@string/bottom_menu_settings" />
+
+</menu>

@@ -1,6 +1,67 @@
 <resources>
-    <string name="app_name">HealthAssistant</string>
-    <string name="general_ok">OK</string>
-    <string name="general_retry">Retry</string>
-    <string name="general_cancel">Cancel</string>
+    <string name="app_name">Health Assistant</string>
+
+    <!--General-->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_gallery">Choose from Gallery</string>
+    <string name="message_need_permission">Need Permissions</string>
+    <string name="message_grant_permission">This app needs permission to use this feature. You can grant them in app settings.</string>
+
+    <!--Bottom Menu-->
+    <string name="about_menu_item">About</string>
+    <string name="rate_us_menu_item">Rate Us</string>
+    <string name="settings_menu_item">Settings</string>
+
+    <!--Errors-->
+    <string name="network_error_connection">Problem with the Internet connection.</string>
+    <string name="network_error_server">Server is temporarily not available.</string>
+    <string name="network_error_unexpected">An unexpected error occurred.</string>
+    <string name="error_message_no_more_space">Your storage is unavailable.</string>
+    <string name="error_message_insufficient_space">You have few space available, please make sure your have more than 5MB on disk to take pictures!</string>
+    <string name="error_message_general">Error occurred!</string>
+    <string name="invalid_email_error_message">Please Enter a valid email address</string>
+    <string name="empty_password_error_message">Password cannot be empty</string>
+    <string name="login_failure_error">Login failed</string>
+    <string name="empty_email_error_message">Email cannot be blank</string>
+
+    <!--Bottom Menu-->
+    <string name="bottom_menu_profile">Profile</string>
+    <string name="bottom_menu_statistics">Statistics</string>
+    <string name="bottom_menu_notifications">Notifications</string>
+    <string name="bottom_menu_settings">Settings</string>
+
+    <!--DateAndTime-->
+    <string name="now">now</string>
+    <string name="a_minute_ago">a minute ago</string>
+    <string name="a_minute_ago_abbreviate">1 min</string>
+    <string name="minutes_ago">minutes ago</string>
+    <string name="minutes_ago_abbreviate">min</string>
+    <string name="an_hour_ago">an hour ago</string>
+    <string name="an_hour_ago_abbreviate">1 hr</string>
+    <string name="hours_ago">hours ago</string>
+    <string name="hours_ago_abbreviate">hrs</string>
+    <string name="yesterday">yesterday</string>
+    <string name="days_ago">days ago</string>
+    <string name="days_ago_abbreviate">days</string>
+
+    <!--Intro-->
+    <string name="next_step">NEXT</string>
+    <string name="complete_step">COMPLETE</string>
+
+    <!--MOCKS-->
+    <string name="heading_text">Neque porro quisquam est qui</string>
+    <string name="first_bubble_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor purus\n</string>
+    <string name="first_bubble_title">Lorem ipsum</string>
+    <string name="second_bubble_title">Ut at urna </string>
+    <string name="second_bubble_description">Ut at urna non nibh viverra consequat. In a nibh a elit feugiat sagittis.\n</string>
+    <string name="third_bubble_title">Aliquam vel dolor</string>
+    <string name="third_bubble_description">- aliquam vel dolor justo. Quisque posuere mollis turpis, eget scelerisque risus maximus vitae.</string>
+    <string name="onboaring_with_motionlayout">Onboaring with MotionLayout</string>
+
 </resources>

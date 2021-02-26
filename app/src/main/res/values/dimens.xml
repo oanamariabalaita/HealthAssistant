@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="height_all_app_bar_0dp">0dp</dimen>
+    <dimen name="radius_dashboard_card_5dp">5dp</dimen>
+    <dimen name="margin_all_activity_horizontal_8dp">8dp</dimen>
+    <dimen name="margin_all_activity_vertical_8dp">8dp</dimen>
+
+    <!--Intro-->
+    <dimen name="size_intro_bubble_item_xlarge">380dp</dimen>
+    <dimen name="size_intro_bubble_item_large">100dp</dimen>
+    <dimen name="size_intro_bubble_item_medium">90dp</dimen>
+    <dimen name="size_intro_bubble_item_small">60dp</dimen>
+
+</resources>

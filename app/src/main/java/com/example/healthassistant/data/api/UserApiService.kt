@@ -1,8 +1,6 @@
 package com.example.healthassistant.data.api
 
-import com.example.healthassistant.data.model.User
-import io.reactivex.Observable
-import io.reactivex.Single
+import com.example.healthassistant.data.model.UserEntity
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -12,18 +10,23 @@ import retrofit2.http.Path
 
 interface UserApiService {
 
-    @GET("users")
-    fun getAllUsers(): Observable<List<User>>
+    companion object {
+        private const val PREFIX = "profile/"
+        private const val GET_USER_INFO = "$PREFIX/info"
+        private const val POST_USER = "$PREFIX/add"
+        private const val PUT_USER = "$PREFIX/details"
+        private const val DELETE_USER = "$PREFIX/{userId}"
+    }
 
-    @GET("users")
-    fun getUserById(@Path("userId") id: Long): Observable<User>
+    @GET(GET_USER_INFO)
+    fun getUserInfo(@Path("userId") id: Long): UserEntity
 
-    @POST
-    fun addUser(@Body user: User): Single<Any>
+    @POST(POST_USER)
+    fun addUser(@Body user: UserEntity)
 
-    @PUT
-    fun updateUser(@Path("userId") id: Long, @Body user: User): Single<Any>
+    @PUT(PUT_USER)
+    fun updateUser(@Path("userId") id: Long, @Body user: UserEntity)
 
-    @DELETE("users")
-    fun deleteUser(@Path("userId") id: Long): Single<Any>
+    @DELETE(DELETE_USER)
+    fun deleteUser(@Path("userId") id: Long)
 }

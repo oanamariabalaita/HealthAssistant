@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_custom_score"
+        android:icon="@drawable/ic_score"
+        android:title="Health Score Formula" />
+
+    <item
+        android:id="@+id/action_add_card"
+        android:icon="@drawable/ic_add"
+        android:title="Add Custom Card" />
+
+    <item
+        android:id="@+id/action_edit_dash"
+        android:icon="@drawable/ic_edit_dash"
+        android:title="Edit Dashboard" />
+    <item
+        android:id="@+id/action_save_gallery"
+        android:icon="@drawable/ic_save_gal"
+        android:title="Save to Gallery" />
+    <item
+        android:id="@+id/action_reset_val"
+        android:icon="@drawable/ic_reset"
+        android:title="Reset Values" />
+
+</menu>

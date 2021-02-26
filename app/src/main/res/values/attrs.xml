@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IntroBubbleItem">
+        <attr name="bl_text" format="string" />
+        <attr name="bl_text_color" format="color" />
+        <attr name="bl_description" format="string" />
+        <attr name="bl_margin_top" format="dimension" />
+        <attr name="bl_margin_start" format="dimension" />
+        <attr name="bl_margin_end" format="dimension" />
+        <attr name="bl_margin_bottom" format="dimension" />
+        <attr name="bl_alignment" format="enum">
+            <enum name="start" value="0" />
+            <enum name="center" value="1" />
+            <enum name="end" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
