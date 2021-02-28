@@ -7,9 +7,9 @@
     <application
         android:name=".presentation.HealthApp"
         android:allowBackup="true"
-        android:icon="@drawable/img_logo"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/app_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.MainActivity" />
