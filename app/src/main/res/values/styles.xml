@@ -155,7 +155,7 @@
     </style>
 
     <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/color_intro_page2</item>
+        <item name="android:windowBackground">@drawable/img_logo</item>
     </style>
 
 </resources>
