@@ -5,6 +5,7 @@ import com.example.healthassistant.domain.interactor.GetHealthIndicesUseCase
 import com.example.healthassistant.domain.interactor.GetUserUseCase
 import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.domain.model.User
+import com.example.healthassistant.domain.repository.PreferencesRepository
 import com.example.healthassistant.presentation.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +14,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
+    private val preferencesRepository: PreferencesRepository,
     private val healthIndicesUseCase: GetHealthIndicesUseCase,
     private val userUseCase: GetUserUseCase
 ) : BaseViewModel() {
