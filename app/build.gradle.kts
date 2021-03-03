@@ -35,8 +35,13 @@ android {
         }
 
         buildFeatures {
+            compose = true
             viewBinding = true
             dataBinding = true
+        }
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = "1.0.0-beta01"
         }
     }
 }
@@ -81,6 +86,21 @@ dependencies {
         // Navigation
         implementation(navigation)
         implementation(navigationUi)
+        implementation(navigationDynamicFeatures)
+        implementation(navigationTesting)
+        implementation(navigationCompose)
+
+        // Compose
+        implementation(composeUi)
+        implementation(composeUiTooling)
+        implementation(composeFoundation)
+        implementation(composeMaterial)
+        implementation(composeMaterialIcons)
+        implementation(composeMaterialIconsExt)
+        implementation(composeActivity)
+        implementation(composeViewModel)
+        implementation(composeLiveData)
+        implementation(composeRxJava2)
 
         // Lifecycle
         implementation(lifecycleCommon)
@@ -97,6 +117,7 @@ dependencies {
         testImplementation(jUnit)
         testImplementation(mockK)
         testImplementation(coroutinesTest)
+        androidTestImplementation(composeJUnit4)
     }
 
     with(Annotations) {

@@ -14,11 +14,35 @@ object Dependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-    const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    const val scopeMob = "com.github.SUB-MOB:scopemob:${Versions.scopeMob}"
+    const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
+
+    // Navigation
+    const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val navigationDynamicFeatures =
+        "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
+    const val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
+    const val navigationCompose =
+        "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+
+    // Compose
+    const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    const val composeMaterialIcons =
+        "androidx.compose.material:material-icons-core:${Versions.compose}"
+    const val composeMaterialIconsExt =
+        "androidx.compose.material:material-icons-extended:${Versions.compose}"
+    const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    const val composeViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModel}"
+    const val composeLiveData =
+        "androidx.compose.runtime:runtime-livedata:${Versions.composeLiveData}"
+    const val composeRxJava2 = "androidx.compose.runtime:runtime-rxjava2:${Versions.composeRxJava2}"
+    const val composeJUnit4 = "androidx.compose.ui:ui-test-junit4:${Versions.composeJUnit4}"
 
     // Lifecycle
     const val lifecycleExtensions =

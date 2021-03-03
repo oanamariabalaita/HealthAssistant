@@ -1,7 +1,8 @@
 @Suppress("SpellCheckingInspection")
 object Versions {
-    const val kotlin = "1.4.10"
-    const val navigation = "2.2.2"
+    const val kotlin = "1.4.30"
+    const val navigation = "2.3.3"
+    const val navigationCompose = "1.0.0-alpha08"
     const val androidPlugin = "4.0.1"
     const val dagger = "2.27"
     const val androidxLifecycle = "2.2.0"
@@ -24,6 +25,12 @@ object Versions {
     const val jUnit = "4.13"
     const val mockK = "1.10.0"
     const val versionsVersion = "0.36.0"
-    const val scopeMob = "1.2.2"
+    const val scopeMob = "2.0.1"
     const val dependencyAnalysis = "0.71.0"
+    const val compose = "1.0.0-beta01"
+    const val composeActivity = "1.3.0-alpha03"
+    const val composeViewModel = "1.0.0-alpha02"
+    const val composeLiveData = "1.0.0-beta01"
+    const val composeRxJava2 = "1.0.0-beta01"
+    const val composeJUnit4 = "1.0.0-beta01"
 }
