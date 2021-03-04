@@ -1,9 +1,9 @@
 plugins {
     with(Plugins) {
         id(application)
+        kotlin(android)
         id(safeargs)
         id(serialization)
-        kotlin(android)
         kotlin(kapt)
     }
 }
@@ -41,15 +41,20 @@ android {
         }
 
         composeOptions {
-            kotlinCompilerExtensionVersion = "1.0.0-beta01"
+            kotlinCompilerExtensionVersion = Versions.compose
         }
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 }
 
 dependencies {
     with(Dependencies) {
-        implementation(kotlin)
-        implementation(kotlinJdk8)
         implementation(appCompat)
         implementation(androidCore)
         implementation(timber)
@@ -59,6 +64,7 @@ dependencies {
         implementation(workManagerRx)
         implementation(workManager)
         implementation(scopeMob)
+        implementation(stdlib)
 
         // UI
         implementation(androidMaterial)
@@ -79,7 +85,7 @@ dependencies {
         implementation(kotlinSerialization)
         implementation(kotlinSerializationConverter)
 
-        // Local DB
+        // Room
         implementation(room)
         implementation(roomKtx)
 
@@ -92,8 +98,11 @@ dependencies {
 
         // Compose
         implementation(composeUi)
+        //      implementation(composeCompiler)
+        implementation(composeRuntime)
         implementation(composeUiTooling)
         implementation(composeFoundation)
+        implementation(composeConstraintLayout)
         implementation(composeMaterial)
         implementation(composeMaterialIcons)
         implementation(composeMaterialIconsExt)

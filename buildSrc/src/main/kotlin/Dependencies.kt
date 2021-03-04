@@ -1,6 +1,6 @@
 @Suppress("SpellCheckingInspection")
 object Dependencies {
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+
     const val androidMaterial = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
@@ -10,13 +10,15 @@ object Dependencies {
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
+
+    //Kotlin
+    const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
 
     // Navigation
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
@@ -29,6 +31,10 @@ object Dependencies {
 
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+    const val composeCompiler = "androidx.compose:compose-compiler:${Versions.compose}"
+    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
+    const val composeConstraintLayout =
+        "androidx.constraintlayout:constraintlayout-compose:${Versions.composeConstraintLayout}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
@@ -42,7 +48,6 @@ object Dependencies {
     const val composeLiveData =
         "androidx.compose.runtime:runtime-livedata:${Versions.composeLiveData}"
     const val composeRxJava2 = "androidx.compose.runtime:runtime-rxjava2:${Versions.composeRxJava2}"
-    const val composeJUnit4 = "androidx.compose.ui:ui-test-junit4:${Versions.composeJUnit4}"
 
     // Lifecycle
     const val lifecycleExtensions =
@@ -80,4 +85,5 @@ object Dependencies {
     const val mockK = "io.mockk:mockk:${Versions.mockK}"
     const val coroutinesTest =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val composeJUnit4 = "androidx.compose.ui:ui-test-junit4:${Versions.composeJUnit4}"
 }
