@@ -16,8 +16,6 @@ object Dependencies {
     const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
-
-    //Kotlin
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
 
     // Navigation
