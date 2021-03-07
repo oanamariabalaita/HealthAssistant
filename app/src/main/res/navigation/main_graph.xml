@@ -35,19 +35,19 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.healthassistant.presentation.features.settings.SettingsFragment"
+        android:name="com.example.healthassistant.presentation.features.settings.Settings"
         android:label="SettingsFragment"
         tools:layout="@layout/settings_fragment" />
 
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.healthassistant.presentation.features.statistics.StatisticsFragment"
+        android:name="com.example.healthassistant.presentation.features.statistics.Statistics"
         android:label="StatisticsFragment"
         tools:layout="@layout/statistics_fragment" />
 
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.healthassistant.presentation.features.notifications.NotificationsFragment"
+        android:name="com.example.healthassistant.presentation.features.notifications.Notifications"
         android:label="NotificationsFragment"
         tools:layout="@layout/notifications_fragment" />
 
