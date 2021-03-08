@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.healthassistant.data.di.DatabaseModule
 import com.example.healthassistant.data.di.NetworkingModule
 import com.example.healthassistant.domain.di.InteractionModule
-import com.example.healthassistant.presentation.HealthApp
+import com.example.healthassistant.presentation.HealthApplication
 import dagger.Module
 import dagger.Provides
 import java.io.File
@@ -18,7 +18,7 @@ import javax.inject.Singleton
         NetworkingModule::class,
         InteractionModule::class]
 )
-class ApplicationModule(private val application: HealthApp) {
+class ApplicationModule(private val application: HealthApplication) {
 
     @Provides
     @Singleton

@@ -1,6 +1,6 @@
 package com.example.healthassistant.presentation.di.components
 
-import com.example.healthassistant.presentation.HealthApp
+import com.example.healthassistant.presentation.HealthApplication
 import com.example.healthassistant.presentation.di.modules.ApplicationModule
 import com.example.healthassistant.presentation.di.modules.MainActivityModule
 import dagger.Component
@@ -17,8 +17,8 @@ import javax.inject.Singleton
         ApplicationModule::class,
         MainActivityModule::class]
 )
-interface AppComponent : AndroidInjector<HealthApp> {
+interface AppComponent : AndroidInjector<HealthApplication> {
 
-    override fun inject(application: HealthApp)
+    override fun inject(application: HealthApplication)
 
 }
