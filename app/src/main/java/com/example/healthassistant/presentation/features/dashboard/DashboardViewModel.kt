@@ -4,11 +4,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.healthassistant.domain.interactor.GetHealthIndicesUseCase
 import com.example.healthassistant.domain.interactor.GetUserUseCase
 import com.example.healthassistant.domain.model.HealthIndex
-import com.example.healthassistant.domain.model.User
 import com.example.healthassistant.domain.repository.PreferencesRepository
 import com.example.healthassistant.presentation.base.BaseViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -19,13 +20,13 @@ class DashboardViewModel @Inject constructor(
     private val userUseCase: GetUserUseCase
 ) : BaseViewModel() {
 
-    private val _userUiState = MutableStateFlow(UserViewState.Empty)
+    private val _userUiState = MutableStateFlow<UserViewState>(UserViewState.Empty)
     private val _healthIndicesUiState =
         MutableStateFlow<HealthIndicesViewState>(HealthIndicesViewState.Success(emptyList()))
-    val healthIndicesViewState: StateFlow<HealthIndicesViewState>
-        get() = _healthIndicesUiState
-    val userViewState: StateFlow<UserViewState>
-        get() = _userUiState
+    val healthIndicesViewState: StateFlow<HealthIndicesViewState> = _healthIndicesUiState
+    val userViewState: StateFlow<UserViewState> = _userUiState
+    private val effectChannel = Channel<DashboardEffect>(Channel.BUFFERED)
+    val effectFlow = effectChannel.receiveAsFlow()
 
     private fun loadHealthIndicesList(userId: String) {
         viewModelScope.launch {
@@ -38,9 +39,9 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
-    private fun loadHealthIndicesFailed(error: Throwable) {
+    private suspend fun loadHealthIndicesFailed(error: Throwable) {
         Timber.e(error)
-        _healthIndicesUiState.value = HealthIndicesViewState.Error(error)
+        _healthIndicesUiState.emit(HealthIndicesViewState.Error(error))
     }
 
     private fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
@@ -48,19 +49,10 @@ class DashboardViewModel @Inject constructor(
             _healthIndicesUiState.value = HealthIndicesViewState.Success(indices)
         }
     }
-}
 
-sealed class HealthIndicesViewState {
-    data class Success(val indices: List<HealthIndex>) : HealthIndicesViewState()
-    data class Error(val exception: Throwable) : HealthIndicesViewState()
-}
-
-sealed class UserViewState {
-    data class Success(val user: User) : UserViewState()
-    data class Error(val exception: Throwable) : UserViewState()
-    object Empty : UserViewState()
-}
-
-sealed class AppViewEffect {
-    data class ShowToast(val message: String) : AppViewEffect()
+    private fun sendToastEvent() {
+        viewModelScope.launch {
+            effectChannel.send(DashboardEffect.ShowToast("Test:working ok"))
+        }
+    }
 }
