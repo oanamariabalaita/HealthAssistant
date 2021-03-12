@@ -4,9 +4,9 @@ sealed class Result<T> {
     data class Success<T>(val data: T) : Result<T>()
     data class Error(val exception: Throwable) : Result<Nothing>()
 
-    fun execute(
-        success: ((T) -> Unit)? = null,
-        error: ((Throwable) -> Unit)? = null,
+    suspend fun execute(
+        success: (suspend (T) -> Unit)? = null,
+        error: (suspend (Throwable) -> Unit)? = null,
         before: (() -> Unit)? = null,
         after: (() -> Unit)? = null
     ) {

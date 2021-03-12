@@ -11,7 +11,7 @@ import dagger.android.HasAndroidInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-class HealthApp : Application(), HasAndroidInjector {
+class HealthApplication : Application(), HasAndroidInjector {
 
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>

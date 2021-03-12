@@ -2,7 +2,6 @@ package com.example.healthassistant.presentation.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.healthassistant.presentation.MainViewModel
 import com.example.healthassistant.presentation.di.ViewModelFactory
 import com.example.healthassistant.presentation.di.ViewModelKey
 import com.example.healthassistant.presentation.features.dashboard.DashboardViewModel
@@ -10,6 +9,7 @@ import com.example.healthassistant.presentation.features.notifications.Notificat
 import com.example.healthassistant.presentation.features.profile.ProfileViewModel
 import com.example.healthassistant.presentation.features.settings.SettingsViewModel
 import com.example.healthassistant.presentation.features.statistics.StatisticsViewModel
+import com.example.healthassistant.presentation.main.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

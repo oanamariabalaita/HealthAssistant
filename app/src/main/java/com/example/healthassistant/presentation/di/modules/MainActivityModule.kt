@@ -1,7 +1,7 @@
 package com.example.healthassistant.presentation.di.modules
 
-import com.example.healthassistant.presentation.MainActivity
 import com.example.healthassistant.presentation.features.splash.SplashActivity
+import com.example.healthassistant.presentation.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,7 +9,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainActivityModule {
 
-    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
+    @ContributesAndroidInjector()
     abstract fun contributeMainActivity(): MainActivity
 
     @ContributesAndroidInjector

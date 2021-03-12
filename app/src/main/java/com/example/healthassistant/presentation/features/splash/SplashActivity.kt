@@ -3,7 +3,7 @@ package com.example.healthassistant.presentation.features.splash
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.healthassistant.presentation.MainActivity
+import com.example.healthassistant.presentation.main.MainActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
