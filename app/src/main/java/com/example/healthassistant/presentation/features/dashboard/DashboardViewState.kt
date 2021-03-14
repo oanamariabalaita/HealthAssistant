@@ -5,12 +5,6 @@ import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.domain.model.User
 
 @Immutable
-data class DashboardViewState(
-    val healthIndicesViewState: HealthIndicesViewState,
-    val userViewState: UserViewState,
-)
-
-@Immutable
 sealed class HealthIndicesViewState {
     data class Success(val indices: List<HealthIndex>) : HealthIndicesViewState()
     data class Error(val exception: Throwable) : HealthIndicesViewState()

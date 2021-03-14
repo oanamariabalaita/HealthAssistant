@@ -28,6 +28,10 @@ class DashboardViewModel @Inject constructor(
     private val effectChannel = Channel<DashboardEffect>(Channel.BUFFERED)
     val effectFlow = effectChannel.receiveAsFlow()
 
+    init {
+        loadHealthIndicesList("test1928878")
+    }
+
     private fun loadHealthIndicesList(userId: String) {
         viewModelScope.launch {
             healthIndicesUseCase
@@ -41,18 +45,19 @@ class DashboardViewModel @Inject constructor(
 
     private suspend fun loadHealthIndicesFailed(error: Throwable) {
         Timber.e(error)
+        sendToastEvent()
         _healthIndicesUiState.emit(HealthIndicesViewState.Error(error))
     }
 
-    private fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
+    private suspend fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
         indices.let {
-            _healthIndicesUiState.value = HealthIndicesViewState.Success(indices)
+            _healthIndicesUiState.emit(HealthIndicesViewState.Success(indices))
         }
     }
 
     private fun sendToastEvent() {
         viewModelScope.launch {
-            effectChannel.send(DashboardEffect.ShowToast("Test:working ok"))
+            effectChannel.send(DashboardEffect.ShowToast("Test:Error but working ok"))
         }
     }
 }

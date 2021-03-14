@@ -17,7 +17,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,18 +33,18 @@ import kotlinx.coroutines.flow.onEach
 @Composable
 fun Dashboard(applicationContext: Context, dashboardViewModel: DashboardViewModel) {
 
-    LaunchedEffect(key1 = "", block = {})
-
     dashboardViewModel.apply {
-        when (userViewState.collectAsState().value) {
-
+        when (healthIndicesViewState.collectAsState().value) {
+            is HealthIndicesViewState.Success -> {
+            }
+            is HealthIndicesViewState.Error -> {
+            }
         }
         effectFlow.onEach {
             when (it) {
                 is DashboardEffect.ShowToast -> {
                     Toast.makeText(applicationContext, "Toast: is working ok", Toast.LENGTH_SHORT)
                         .show()
-
                 }
             }
         }
