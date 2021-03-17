@@ -2,7 +2,7 @@ package com.example.healthassistant.domain.repository
 
 import com.example.healthassistant.data.api.UserApiService
 import com.example.healthassistant.data.db.UserDao
-import com.example.healthassistant.domain.utils.networking.toModel
+import com.example.healthassistant.domain.utils.extensions.toModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,6 +14,6 @@ class UserRepository @Inject constructor(
 
     suspend fun getUserInfo(userId: Long) =
         apiRequest {
-            userService.getUserInfo(userId).toModel()
+            userService.getUserInfo(userId).toModel
         }
 }

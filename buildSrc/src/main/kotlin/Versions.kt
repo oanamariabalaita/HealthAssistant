@@ -3,7 +3,7 @@ object Versions {
     const val kotlin = "1.4.30"
     const val navigation = "2.3.3"
     const val navigationCompose = "1.0.0-alpha08"
-    const val androidPlugin = "7.0.0-alpha09"
+    const val androidPlugin = "7.0.0-alpha10"
     const val dagger = "2.27"
     const val androidxLifecycle = "2.2.0"
     const val appCompat = "1.1.0"

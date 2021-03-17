@@ -1,4 +1,4 @@
-package com.example.healthassistant.domain.utils.networking
+package com.example.healthassistant.domain.utils.extensions
 
 import kotlinx.coroutines.delay
 import retrofit2.Call

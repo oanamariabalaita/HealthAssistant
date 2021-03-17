@@ -2,7 +2,7 @@ package com.example.healthassistant.domain.repository
 
 import com.example.healthassistant.data.api.HealthApiService
 import com.example.healthassistant.data.db.HealthDao
-import com.example.healthassistant.domain.utils.networking.toModel
+import com.example.healthassistant.domain.utils.extensions.toModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,7 +16,7 @@ class HealthRepository @Inject constructor(
         apiRequest {
             healthService
                 .getIndicesList(userId)
-                .map { it.toModel() }
+                .map { it.toModel }
         }
 //            .also { apiResult ->
 //            when (apiResult) {
