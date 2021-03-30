@@ -23,8 +23,10 @@ class DashboardViewModel @Inject constructor(
     private val _userUiState = MutableStateFlow<UserViewState>(UserViewState.Empty)
     private val _healthIndicesUiState =
         MutableStateFlow<HealthIndicesViewState>(HealthIndicesViewState.Success(emptyList()))
+    private val _healthSummaryState = MutableStateFlow<HealthSummaryState>(HealthSummaryState.Empty)
     val healthIndicesViewState: StateFlow<HealthIndicesViewState> = _healthIndicesUiState
     val userViewState: StateFlow<UserViewState> = _userUiState
+    val healthSummaryState: StateFlow<HealthSummaryState> = _healthSummaryState
     private val effectChannel = Channel<DashboardEffect>(Channel.BUFFERED)
     val effectFlow = effectChannel.receiveAsFlow()
     val event = this as DashboardEvent
@@ -45,10 +47,9 @@ class DashboardViewModel @Inject constructor(
     }
 
     // region State
-
     private suspend fun loadHealthIndicesFailed(error: Throwable) {
         Timber.e(error)
-        sendToastEffect()
+        effectChannel.send(DashboardEffect.ShowToast("Test:Error but working ok"))
         _healthIndicesUiState.emit(HealthIndicesViewState.Error(error))
     }
 
@@ -60,28 +61,19 @@ class DashboardViewModel @Inject constructor(
 
     // endregion
 
-    // region Effect
-
-    private fun sendToastEffect() {
-        viewModelScope.launch {
-            effectChannel.send(DashboardEffect.ShowToast("Test:Error but working ok"))
-        }
-    }
-
-    // endregion
-
     // region Event
 
-    override fun onCardDetailsClick(userId: Long, cardId: Long) {
-        // "Not yet implemented"
+    override fun onCardDetailsClick(cardId: Long) {
+    }
+
+    override fun onHealthSummaryClick() {
     }
 
     override fun onStatisticsClick() {
-        // "Not yet implemented"
     }
 
     override fun onRefreshSwipe() {
-        // "Not yet implemented"
+
     }
 
     // endregion

@@ -32,4 +32,5 @@ class ApplicationModule(private val application: HealthApplication) {
     @Singleton
     @Provides
     fun provideApplicationId(): String = application.packageName
+
 }

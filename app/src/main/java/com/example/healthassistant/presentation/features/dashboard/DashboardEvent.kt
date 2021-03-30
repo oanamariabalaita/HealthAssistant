@@ -1,7 +1,8 @@
 package com.example.healthassistant.presentation.features.dashboard
 
 interface DashboardEvent {
-    fun onCardDetailsClick(userId: Long, cardId: Long)
+    fun onCardDetailsClick(cardId: Long)
+    fun onHealthSummaryClick()
     fun onStatisticsClick()
     fun onRefreshSwipe()
 }

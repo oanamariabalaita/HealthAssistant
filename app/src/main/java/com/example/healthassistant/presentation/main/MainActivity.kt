@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             HealthAppTheme {
-                MainView(onBackPressedDispatcher, mainViewModel)
+                MainView(onBackPressedDispatcher, mainViewModel, applicationContext)
             }
         }
     }
