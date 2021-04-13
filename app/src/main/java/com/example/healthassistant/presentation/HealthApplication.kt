@@ -1,37 +1,38 @@
 package com.example.healthassistant.presentation
 
 import android.app.Application
-import com.example.healthassistant.presentation.di.components.AppComponent
-import com.example.healthassistant.presentation.di.components.DaggerAppComponent
-import com.example.healthassistant.presentation.di.modules.ApplicationModule
+import com.example.healthassistant.data.di.databaseModule
+import com.example.healthassistant.data.di.networkModule
+import com.example.healthassistant.domain.di.interactionModule
+import com.example.healthassistant.presentation.di.applicationModule
+import com.example.healthassistant.presentation.di.viewModelModule
 import com.facebook.stetho.Stetho
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 import timber.log.Timber
-import javax.inject.Inject
 
-class HealthApplication : Application(), HasAndroidInjector {
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    private val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        DaggerAppComponent
-            .builder()
-            .applicationModule(ApplicationModule(this))
-            .build()
-    }
+class HealthApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
+        initKoin()
         Stetho.initializeWithDefaults(this)
         Timber.plant(Timber.DebugTree())
-        this.injectMembers()
     }
 
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
-
-    private fun injectMembers() = appComponent.inject(this)
+    private fun initKoin() {
+        startKoin {
+            androidLogger()
+            androidContext(this@HealthApplication)
+            modules(
+                applicationModule,
+                interactionModule,
+                databaseModule,
+                networkModule,
+                viewModelModule
+            )
+        }
+    }
 }

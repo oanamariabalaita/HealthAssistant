@@ -13,8 +13,10 @@ object Dependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
-    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    const val koin = "io.insert-koin:koin-android:${Versions.koin}"
+    const val koinExt = "io.insert-koin:koin-android-ext:${Versions.koin}"
+    const val koinWorkManager = "io.insert-koin:koin-androidx-workmanager:${Versions.koin}"
+    const val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
     const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
 
@@ -29,7 +31,6 @@ object Dependencies {
 
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
-    const val composeCompiler = "androidx.compose:compose-compiler:${Versions.compose}"
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeConstraintLayout =
         "androidx.constraintlayout:constraintlayout-compose:${Versions.composeConstraintLayout}"

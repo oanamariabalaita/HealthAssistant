@@ -1,29 +1,26 @@
 package com.example.healthassistant.data.di
 
-import android.content.Context
+import androidx.room.Room
+import com.example.healthassistant.R
 import com.example.healthassistant.data.db.AppDatabase
-import com.example.healthassistant.data.db.HealthDao
-import com.example.healthassistant.data.db.UserDao
-import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import org.koin.android.ext.koin.androidApplication
+import org.koin.dsl.module
 
-@Module
-class DatabaseModule {
-
-    @Provides
-    fun provideHealthDao(db: AppDatabase): HealthDao {
-        return db.healthDao()
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(
+            androidApplication(),
+            AppDatabase::class.java,
+            androidApplication().baseContext.getString(R.string.app_name)
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
-    @Provides
-    fun provideUserDao(db: AppDatabase): UserDao {
-        return db.userDao()
+    single {
+        get<AppDatabase>().healthDao()
     }
-
-    @Provides
-    @Singleton
-    internal fun providesAppDatabase(
-        applicationContext: Context
-    ): AppDatabase = AppDatabase.createAppDatabase(applicationContext)
+    single {
+        get<AppDatabase>().userDao()
+    }
 }

@@ -73,10 +73,6 @@ dependencies {
         implementation(glide)
         implementation(chart)
 
-        // DI
-        implementation(dagger)
-        implementation(daggerAndroidSupport)
-
         // Network
         implementation(retrofit)
         implementation(retrofitConverter)
@@ -98,7 +94,6 @@ dependencies {
 
         // Compose
         implementation(composeUi)
-        //      implementation(composeCompiler)
         implementation(composeRuntime)
         implementation(composeUiTooling)
         implementation(composeFoundation)
@@ -122,6 +117,12 @@ dependencies {
         implementation(coroutines)
         implementation(coroutinesCore)
 
+        // Koin
+        implementation(koin)
+        implementation(koinExt)
+        implementation(koinCompose)
+        implementation(koinWorkManager)
+
         // Test
         testImplementation(jUnit)
         testImplementation(mockK)
@@ -130,8 +131,6 @@ dependencies {
     }
 
     with(Annotations) {
-        kapt(daggerCompiler)
-        kapt(daggerProcessor)
         kapt(room)
     }
 }

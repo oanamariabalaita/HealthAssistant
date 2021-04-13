@@ -3,11 +3,8 @@ package com.example.healthassistant.domain.repository
 import com.example.healthassistant.data.api.HealthApiService
 import com.example.healthassistant.data.db.HealthDao
 import com.example.healthassistant.domain.utils.extensions.toModel
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class HealthRepository @Inject constructor(
+class HealthRepository(
     private val healthDao: HealthDao,
     private val healthService: HealthApiService
 ) : BaseRepository() {
