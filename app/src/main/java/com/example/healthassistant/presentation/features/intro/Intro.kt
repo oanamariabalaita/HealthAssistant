@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.View
-import android.widget.Button
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -21,18 +20,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
 import com.example.healthassistant.R
-import com.example.healthassistant.databinding.IntroFragmentBinding
 import com.example.healthassistant.presentation.theme.HealthAppTheme
 
 @Composable
-fun Intro(
-    introComplete: () -> Unit,
-    navigateToDashboard: () -> Unit
-) {
+fun Intro(navigateToDashboard: () -> Unit) {
     HealthAppTheme {
         Scaffold(
             backgroundColor = MaterialTheme.colors.primarySurface,
@@ -63,14 +56,7 @@ fun Intro(
     }
 }
 
-@Preview(name = "Intro")
-@Composable
-private fun IntroPreview() {
-    Intro(introComplete = { }, navigateToDashboard = { })
-}
-
 private const val CIRCULAR_FRAMES_COUNT = 3
-private lateinit var viewBinding: IntroFragmentBinding
 private val indicators = mutableListOf<View>()
 private var currentPosition = 0
 
@@ -85,50 +71,50 @@ private var currentPosition = 0
 //}
 
 private fun attachPreviousButtonListener() {
-    viewBinding.previous.setOnClickListener {
-        when (currentPosition) {
-            2 -> viewBinding.previous.navigate(R.id.thirdTransition, R.id.secondTransition)
-            else -> viewBinding.previous.navigate(R.id.secondTransition, R.id.firstTransition)
-        }
-    }
+//    viewBinding.previous.setOnClickListener {
+//        when (currentPosition) {
+//            2 -> viewBinding.previous.navigate(R.id.thirdTransition, R.id.secondTransition)
+//            else -> viewBinding.previous.navigate(R.id.secondTransition, R.id.firstTransition)
+//        }
+//    }
 }
 
 private fun updateNavState() {
-    when {
-        currentPosition > 0 -> viewBinding.previous.visibility = View.VISIBLE
-        else -> viewBinding.previous.visibility = View.INVISIBLE
-    }
+//    when {
+//        currentPosition > 0 -> viewBinding.previous.visibility = View.VISIBLE
+//        else -> viewBinding.previous.visibility = View.INVISIBLE
+//    }
 }
 
-private fun Button.navigate(startId: Int, endId: Int) {
-    currentPosition = when (id) {
-        R.id.next -> currentPosition.inc()
-        else -> currentPosition.dec()
-    }
-    updateNavState()
-
-    if (endId == R.id.thirdTransition) {
-        viewBinding.navContainer.setBackgroundColor(
-            ContextCompat.getColor(
-                context,
-                R.color.color_intro_page3
-            )
-        )
-        viewBinding.next.text = context.getString(R.string.next_step)
-    } else {
-        viewBinding.next.text = context.getString(R.string.complete_step)
-        viewBinding.navContainer.setBackgroundColor(
-            ContextCompat.getColor(
-                context, R.color.intro_background
-            )
-        )
-    }
-    viewBinding.motionContainer.motionLayout.setTransition(startId, endId)
-    viewBinding.motionContainer.motionLayout.transitionToEnd()
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        updateIndicators()
-    }
-}
+//private fun Button.navigate(startId: Int, endId: Int) {
+//    currentPosition = when (id) {
+//        R.id.next -> currentPosition.inc()
+//        else -> currentPosition.dec()
+//    }
+//    updateNavState()
+//
+//    if (endId == R.id.thirdTransition) {
+//        viewBinding.navContainer.setBackgroundColor(
+//            ContextCompat.getColor(
+//                context,
+//                R.color.color_intro_page3
+//            )
+//        )
+//        viewBinding.next.text = context.getString(R.string.next_step)
+//    } else {
+//        viewBinding.next.text = context.getString(R.string.complete_step)
+//        viewBinding.navContainer.setBackgroundColor(
+//            ContextCompat.getColor(
+//                context, R.color.intro_background
+//            )
+//        )
+//    }
+//    viewBinding.motionContainer.motionLayout.setTransition(startId, endId)
+//    viewBinding.motionContainer.motionLayout.transitionToEnd()
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//        updateIndicators()
+//    }
+//}
 
 private fun updateIndicators() {
     indicators.forEachIndexed { index, view ->

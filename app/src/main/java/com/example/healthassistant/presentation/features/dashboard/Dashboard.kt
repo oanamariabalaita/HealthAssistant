@@ -29,46 +29,40 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.healthassistant.R
-import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.domain.model.HealthSummary
 import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun Dashboard(
     applicationContext: Context,
-    viewModel: DashboardViewModel
+    navigateToSettings: () -> Unit,
+    navigateToStatistics: () -> Unit,
+    navigateToHealthCardDetails: () -> Unit,
+    navigateToHealthSummaryDetails: () -> Unit,
+    dashboardViewModel: DashboardViewModel = getViewModel()
 ) {
-    lateinit var healthSummary: HealthSummary
-    lateinit var healthIndices: List<HealthIndex>
-    val viewState: HealthIndicesViewState = viewModel.healthIndicesViewState.collectAsState().value
 
-    viewModel.apply {
-        when (viewState) {
-            is HealthIndicesViewState.Success -> {
-            }
-            is HealthIndicesViewState.Error -> {
-                LaunchedEffect("key") {
-                }
-            }
+    when (dashboardViewModel.healthIndicesViewState.collectAsState().value) {
+        is HealthIndicesViewState.Success -> {
         }
-        effectFlow.onEach {
-            when (it) {
-                is DashboardEffect.ShowToast -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Toast: is working ok",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                }
+        is HealthIndicesViewState.Error -> {
+            LaunchedEffect("key") {
             }
         }
     }
-    HealthSummaryCard(
-        summary = healthSummary,
-        onSummaryChange = { healthSummary = it },
-        onSummaryClick = viewModel::onHealthSummaryClick
-    )
+    dashboardViewModel.effectFlow.onEach {
+        when (it) {
+            is DashboardEffect.ShowToast -> {
+                Toast.makeText(
+                    applicationContext,
+                    "Toast: is working ok",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+        }
+    }
 }
 
 @Composable

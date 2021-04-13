@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/custom_marker_view.xml" value="0.1" />
+        <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/custom_marker_view.xml" value="0.36" />
         <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/intro_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/intro_layout_bubble_item.xml" value="0.1" />
         <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/intro_motion_layout.xml" value="0.1" />
@@ -14,6 +14,7 @@
         <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/notifications_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/radar_markerview.xml" value="0.1" />
         <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/layout/spash_activity.xml" value="0.7298387096774194" />
+        <entry key="..\:/Users/Maria Balaita/StudioProjects/Temp/HealthAssistant/app/src/main/res/menu/header_menu_dash.xml" value="0.18051282051282053" />
       </map>
     </option>
   </component>

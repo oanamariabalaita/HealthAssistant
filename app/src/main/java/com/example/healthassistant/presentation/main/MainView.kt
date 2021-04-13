@@ -4,17 +4,18 @@ import android.content.Context
 import androidx.activity.OnBackPressedDispatcher
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import com.example.healthassistant.presentation.router.LocalBackDispatcher
-import com.example.healthassistant.presentation.router.NavGraph
+import com.example.healthassistant.presentation.router.HealthAssistantRouter
+import com.example.healthassistant.presentation.utils.LocalBackDispatcher
 
 @Composable
 fun MainView(
     backDispatcher: OnBackPressedDispatcher,
-    viewModel: MainViewModel,
+    mainViewModel: MainViewModel,
     applicationContext: Context
 ) {
-
-    CompositionLocalProvider(LocalBackDispatcher provides backDispatcher) {
-        NavGraph(applicationContext)
+    CompositionLocalProvider(
+        LocalBackDispatcher provides backDispatcher
+    ) {
+        HealthAssistantRouter(applicationContext)
     }
 }

@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.healthassistant.domain.interactor.GetHealthIndicesUseCase
 import com.example.healthassistant.domain.interactor.GetUserUseCase
 import com.example.healthassistant.domain.model.HealthIndex
-import com.example.healthassistant.domain.repository.PreferencesRepository
 import com.example.healthassistant.presentation.base.BaseViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,10 +11,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import javax.inject.Inject
 
-class DashboardViewModel @Inject constructor(
-    private val preferencesRepository: PreferencesRepository,
+class DashboardViewModel(
     private val healthIndicesUseCase: GetHealthIndicesUseCase,
     private val userUseCase: GetUserUseCase
 ) : BaseViewModel(), DashboardEvent {
