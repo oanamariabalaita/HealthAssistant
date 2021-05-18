@@ -47,6 +47,7 @@ object Dependencies {
     const val composeLiveData =
         "androidx.compose.runtime:runtime-livedata:${Versions.composeLiveData}"
     const val composeRxJava2 = "androidx.compose.runtime:runtime-rxjava2:${Versions.composeRxJava2}"
+    const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.composeLottie}"
 
     // Lifecycle
     const val lifecycleExtensions =

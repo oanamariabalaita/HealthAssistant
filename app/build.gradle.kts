@@ -105,6 +105,7 @@ dependencies {
         implementation(composeViewModel)
         implementation(composeLiveData)
         implementation(composeRxJava2)
+        implementation(composeLottie)
 
         // Lifecycle
         implementation(lifecycleCommon)

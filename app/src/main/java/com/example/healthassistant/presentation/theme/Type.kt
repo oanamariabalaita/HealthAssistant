@@ -16,7 +16,7 @@ private val Montserrat = FontFamily(
 )
 
 @SuppressWarnings("MagicNumber")
-val HealthAppTypography = Typography(
+val AppTypography = Typography(
     h1 = TextStyle(
         fontFamily = Montserrat,
         fontSize = 96.sp,

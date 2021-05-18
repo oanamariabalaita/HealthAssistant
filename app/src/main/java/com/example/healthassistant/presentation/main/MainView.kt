@@ -10,12 +10,9 @@ import com.example.healthassistant.presentation.utils.LocalBackDispatcher
 @Composable
 fun MainView(
     backDispatcher: OnBackPressedDispatcher,
-    mainViewModel: MainViewModel,
     applicationContext: Context
 ) {
-    CompositionLocalProvider(
-        LocalBackDispatcher provides backDispatcher
-    ) {
+    CompositionLocalProvider(LocalBackDispatcher provides backDispatcher) {
         HealthAssistantRouter(applicationContext)
     }
 }
