@@ -53,10 +53,7 @@ fun HealthAssistantRouter(
             route = CARD_DETAILS_ROUTE,
             arguments = listOf(navArgument(CardId) { type = NavType.StringType })
         ) { backStackEntry ->
-            CardDetails(
-                cardId = backStackEntry.arguments?.getString(CardId) ?: "",
-                navigateBack = actions.navigateBack
-            )
+            CardDetails(cardId = backStackEntry.arguments?.getString(CardId) ?: "")
         }
         composable(SETTINGS_ROUTE) {
         }

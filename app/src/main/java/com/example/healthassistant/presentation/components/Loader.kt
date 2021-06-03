@@ -11,10 +11,9 @@ import com.airbnb.lottie.compose.LottieAnimationSpec
 import com.airbnb.lottie.compose.rememberLottieAnimationState
 import com.example.healthassistant.R
 
-
 @Composable
 fun Loader() {
-    val animationSpec = remember { LottieAnimationSpec.RawRes(R.raw.loader) }
+    val animationSpec = remember { LottieAnimationSpec.RawRes(R.raw.blue_loader) }
     val animationState =
         rememberLottieAnimationState(autoPlay = true, repeatCount = Integer.MAX_VALUE)
 
@@ -22,7 +21,7 @@ fun Loader() {
         animationSpec,
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp),
+            .height(200.dp),
         animationState
     )
 }

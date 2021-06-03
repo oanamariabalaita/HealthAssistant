@@ -9,6 +9,12 @@ class Actions(navController: NavHostController) {
             launchSingleTop = true
         }
     }
+    val popBackStackAndNavigateToDashboard: () -> Unit = {
+        navController.apply {
+            popBackStack()
+            navigate(Destinations.DASHBOARD_ROUTE)
+        }
+    }
     val navigateUp: () -> Unit = {
         navController.navigateUp()
     }
