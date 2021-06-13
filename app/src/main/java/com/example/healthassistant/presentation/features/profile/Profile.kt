@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.example.healthassistant.presentation.components.ComingSoon
 
 @Composable
-fun Profile() {
+fun Profile(userId: String?) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()

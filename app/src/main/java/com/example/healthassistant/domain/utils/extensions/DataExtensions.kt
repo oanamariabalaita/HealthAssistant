@@ -30,6 +30,7 @@ internal val User.toEntity: UserEntity
 internal val HealthIndexEntity.toModel: HealthIndex
     get() = HealthIndex(
         id = id.toString(),
+        userId = userId.toString(),
         indexName = indexName,
         imgId = imgId,
         descriptiveVal = descriptiveVal,
@@ -42,6 +43,7 @@ internal val HealthIndexEntity.toModel: HealthIndex
 internal val HealthIndex.toEntity: HealthIndexEntity
     get() = HealthIndexEntity(
         id = id.toLong(),
+        userId = userId.toLong(),
         indexName = indexName,
         imgId = imgId,
         descriptiveVal = descriptiveVal,

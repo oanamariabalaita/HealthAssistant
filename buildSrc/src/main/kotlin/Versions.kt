@@ -1,6 +1,6 @@
 @Suppress("SpellCheckingInspection")
 object Versions {
-    const val kotlin = "1.4.32"
+    const val kotlin = "1.5.10"
     const val navigation = "2.3.3"
     const val navigationCompose = "1.0.0-alpha08"
     const val androidPlugin = "7.0.0-beta03"
@@ -13,7 +13,7 @@ object Versions {
     const val material = "1.1.0"
     const val recyclerView = "1.1.0"
     const val room = "2.2.5"
-    const val kotlinSerialization = "1.0.1"
+    const val kotlinSerialization = "1.2.1"
     const val kotlinSerializationConverter = "0.8.0"
     const val okhttp = "4.9.0"
     const val retrofit = "2.8.1"
@@ -25,6 +25,7 @@ object Versions {
     const val jUnit = "4.13"
     const val mockK = "1.10.0"
     const val versionsVersion = "0.36.0"
+    const val jvm = "1.5.0"
     const val scopeMob = "2.0.1"
     const val dependencyAnalysis = "0.71.0"
     const val compose = "1.0.0-beta04"

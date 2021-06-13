@@ -14,6 +14,10 @@ data class HealthIndexEntity(
     @ColumnInfo(name = "id")
     var id: Long,
 
+    @PrimaryKey()
+    @ColumnInfo(name = "userId")
+    var userId: Long,
+
     @ColumnInfo(name = "name")
     var indexName: String,
 

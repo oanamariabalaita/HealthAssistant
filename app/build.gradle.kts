@@ -10,11 +10,11 @@ plugins {
 
 android {
     with(ProjectSettings) {
-        compileSdkVersion(projectCompileSdkVersion)
+        compileSdk = projectCompileSdkVersion
 
         defaultConfig {
-            minSdkVersion(projectMinSdkVersion)
-            targetSdkVersion(projectTargetSdkVersion)
+            minSdk = projectMinSdkVersion
+            targetSdk = projectTargetSdkVersion
 
             multiDexEnabled = true
             vectorDrawables.useSupportLibrary = true

@@ -5,7 +5,7 @@
 
     <item android:drawable="@android:color/white" />
     <item
-        android:drawable="@drawable/ic_ha_logo"
+        android:drawable="@drawable/ic_logo"
         android:gravity="center" />
 
 </layer-list>

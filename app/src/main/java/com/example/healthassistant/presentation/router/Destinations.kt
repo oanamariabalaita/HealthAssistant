@@ -6,7 +6,7 @@ object Destinations {
 
     const val INTRO_ROUTE = "intro"
     const val DASHBOARD_ROUTE = "dashboard"
-    const val PROFILE_ROUTE = "profile"
+    const val PROFILE_ROUTE = "profile?userId={userId}"
     const val STATISTICS_ROUTE = "statistics"
     const val CARD_DETAILS_ROUTE = "cardDetail/{$CardId}"
     const val ADD_RECORD_ROUTE = "record"
