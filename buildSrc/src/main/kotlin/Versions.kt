@@ -1,6 +1,6 @@
 @Suppress("SpellCheckingInspection")
 object Versions {
-    const val kotlin = "1.5.10"
+    const val kotlin = "1.4.32"
     const val navigation = "2.3.3"
     const val navigationCompose = "1.0.0-alpha08"
     const val androidPlugin = "7.0.0-beta03"

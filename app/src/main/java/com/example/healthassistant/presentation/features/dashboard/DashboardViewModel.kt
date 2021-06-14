@@ -29,7 +29,7 @@ class DashboardViewModel(
     val event = this as DashboardEvent
 
     init {
-        loadHealthIndicesList("test1928878")
+        loadHealthIndicesList("982")
     }
 
     private fun loadHealthIndicesList(userId: String) {
@@ -46,11 +46,12 @@ class DashboardViewModel(
     // region State
     private suspend fun loadHealthIndicesFailed(error: Throwable) {
         Timber.e(error)
-        effectChannel.send(DashboardEffect.ShowToast("Test:Error but working ok"))
+        effectChannel.send(DashboardEffect.ShowToast("Test:ERROR but working ok"))
         _healthIndicesUiState.emit(HealthIndicesViewState.Error(error))
     }
 
     private suspend fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
+        effectChannel.send(DashboardEffect.ShowToast("Test:SUCCESS and working ok"))
         indices.let {
             _healthIndicesUiState.emit(HealthIndicesViewState.Success(indices))
         }
