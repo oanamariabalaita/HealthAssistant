@@ -65,10 +65,10 @@ dependencies {
         implementation(workManager)
         implementation(scopeMob)
         implementation(stdlib)
+        implementation(systemUiController)
 
         // UI
         implementation(androidMaterial)
-        implementation(constraintLayout)
         implementation(recyclerView)
         implementation(glide)
         implementation(chart)
