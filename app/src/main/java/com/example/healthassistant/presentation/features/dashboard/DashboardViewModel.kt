@@ -5,10 +5,10 @@ import com.example.healthassistant.domain.interactor.GetHealthIndicesUseCase
 import com.example.healthassistant.domain.interactor.GetUserUseCase
 import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.presentation.base.BaseViewModel
-import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -17,15 +17,11 @@ class DashboardViewModel(
     private val userUseCase: GetUserUseCase
 ) : BaseViewModel(), DashboardEvent {
 
-    private val _userUiState = MutableStateFlow<UserViewState>(UserViewState.Empty)
-    private val _healthIndicesUiState =
-        MutableStateFlow<HealthIndicesViewState>(HealthIndicesViewState.Success(emptyList()))
-    private val _healthSummaryState = MutableStateFlow<HealthSummaryState>(HealthSummaryState.Empty)
-    val healthIndicesViewState: StateFlow<HealthIndicesViewState> = _healthIndicesUiState
-    val userViewState: StateFlow<UserViewState> = _userUiState
-    val healthSummaryState: StateFlow<HealthSummaryState> = _healthSummaryState
-    private val effectChannel = Channel<DashboardEffect>(Channel.BUFFERED)
-    val effectFlow = effectChannel.receiveAsFlow()
+    private val _state = MutableStateFlow(DashboardState())
+    private val _effect = MutableSharedFlow<DashboardEffect>()
+
+    val state = _state.asStateFlow()
+    val effect = _effect.asSharedFlow()
     val event = this as DashboardEvent
 
     init {
@@ -37,43 +33,29 @@ class DashboardViewModel(
             healthIndicesUseCase
                 .run(GetHealthIndicesUseCase.Params(userId))
                 .execute(
-                    ::loadHealthIndicesSuccess,
-                    ::loadHealthIndicesFailed
+                    success = ::loadHealthIndicesSuccess,
+                    error = ::loadHealthIndicesFailed,
+                    before = { _state.update(healthIndicesLoading = true) },
+                    after = { _state.update(healthIndicesLoading = false) }
                 )
         }
     }
 
-    // region State
     private suspend fun loadHealthIndicesFailed(error: Throwable) {
         Timber.e(error)
-        effectChannel.send(DashboardEffect.ShowToast("Test:ERROR but working ok"))
-        _healthIndicesUiState.emit(HealthIndicesViewState.Error(error))
+        _effect.emit(DashboardEffect.ShowToast("Test:ERROR but working ok"))
     }
 
     private suspend fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
-        effectChannel.send(DashboardEffect.ShowToast("Test:SUCCESS and working ok"))
-        indices.let {
-            _healthIndicesUiState.emit(HealthIndicesViewState.Success(indices))
-        }
+        _effect.emit(DashboardEffect.ShowToast("Test:SUCCESS and working ok"))
+        _state.update(indices = indices)
     }
 
-    // endregion
+    override fun onCardDetailsClick(cardId: Long) {}
 
-    // region Event
+    override fun onHealthSummaryClick() {}
 
-    override fun onCardDetailsClick(cardId: Long) {
-    }
+    override fun onStatisticsClick() {}
 
-    override fun onHealthSummaryClick() {
-    }
-
-    override fun onStatisticsClick() {
-    }
-
-    override fun onRefreshSwipe() {
-
-    }
-
-    // endregion
-
+    override fun onRefreshSwipe() {}
 }

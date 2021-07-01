@@ -6,7 +6,6 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
 
@@ -44,9 +43,9 @@ object OkHttpFactory {
         val builder = OkHttpClient().newBuilder()
             .connectionSpecs(listOf(ConnectionSpec.CLEARTEXT, ConnectionSpec.COMPATIBLE_TLS))
             .sslSocketFactory(sslSocketFactory, noCheckTrustManager)
-            .hostnameVerifier(HostnameVerifier { _, _ -> true })
-            .readTimeout(120000L, TimeUnit.MILLISECONDS)
-            .connectTimeout(120000L, TimeUnit.MILLISECONDS)
+            .hostnameVerifier { _, _ -> true }
+            .readTimeout(4000L, TimeUnit.MILLISECONDS)
+            .connectTimeout(4000L, TimeUnit.MILLISECONDS)
 
         interceptors.forEach { builder.addInterceptor(it) }
         return builder.build()

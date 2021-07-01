@@ -1,7 +1,6 @@
 package com.example.healthassistant.presentation.router
 
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.navigate
 
 class Actions(navController: NavHostController) {
     val navigateToDashboard: () -> Unit = {

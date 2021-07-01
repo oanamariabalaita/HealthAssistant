@@ -8,7 +8,7 @@
     "quantitative": 60,
     "unit": "BPM",
     "recorded": "12-05-2021",
-    "selected": true
+    "selected": false
   },
   {
     "id": "2",
@@ -19,16 +19,94 @@
     "quantitative": 8,
     "unit": "H",
     "recorded": "12-05-2021",
-    "selected": true
+    "selected": false
   },
   {
     "id": "3",
+    "userId": "982",
     "name": "Pulse",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
     "descriptive": "Number of heart beats per minute",
     "quantitative": 60,
     "unit": "BPM",
     "recorded": "12-05-2021",
-    "selected": true
+    "selected": false
+  },
+  {
+    "id": "4",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
+  },
+  {
+    "id": "5",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
+  },
+  {
+    "id": "6",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
+  },
+  {
+    "id": "7",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
+  },
+  {
+    "id": "8",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
+  },
+  {
+    "id": "9",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
+  },
+  {
+    "id": "10",
+    "userId": "982",
+    "name": "Pulse",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj1_BUk6nb2bvXtLomaDYMD3_zmwCloJOEcA&usqp=CAU",
+    "descriptive": "Number of heart beats per minute",
+    "quantitative": 60,
+    "unit": "BPM",
+    "recorded": "12-05-2021",
+    "selected": false
   }
 ]

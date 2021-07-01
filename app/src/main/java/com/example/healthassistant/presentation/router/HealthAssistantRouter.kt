@@ -3,6 +3,8 @@ package com.example.healthassistant.presentation.router
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,7 +16,7 @@ import com.example.healthassistant.presentation.features.intro.Intro
 import com.example.healthassistant.presentation.features.profile.Profile
 import com.example.healthassistant.presentation.router.Destinations.ADD_RECORD_ROUTE
 import com.example.healthassistant.presentation.router.Destinations.CARD_DETAILS_ROUTE
-import com.example.healthassistant.presentation.router.Destinations.CardDetailArgs.CardId
+import com.example.healthassistant.presentation.router.Destinations.CardDetailArgs.CARD_ID
 import com.example.healthassistant.presentation.router.Destinations.DASHBOARD_ROUTE
 import com.example.healthassistant.presentation.router.Destinations.INTRO_ROUTE
 import com.example.healthassistant.presentation.router.Destinations.NOTIFICATIONS_ROUTE
@@ -24,10 +26,11 @@ import com.example.healthassistant.presentation.router.Destinations.STATISTICS_R
 
 @Composable
 fun HealthAssistantRouter(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
     applicationContext: Context,
     startDestination: String = DASHBOARD_ROUTE
 ) {
-    val navController = rememberNavController()
     val actions = remember(navController) { Actions(navController) }
 
     NavHost(
@@ -39,11 +42,10 @@ fun HealthAssistantRouter(
         }
         composable(DASHBOARD_ROUTE) {
             Dashboard(
+                modifier,
                 applicationContext,
                 actions.navigateToDashboard,
                 actions.navigateToDashboard,
-                actions.navigateToDashboard,
-                actions.navigateToDashboard
             )
         }
         composable(NOTIFICATIONS_ROUTE) {
@@ -51,10 +53,12 @@ fun HealthAssistantRouter(
         composable(ADD_RECORD_ROUTE) {
         }
         composable(
-            route = CARD_DETAILS_ROUTE,
-            arguments = listOf(navArgument(CardId) { type = NavType.StringType })
+            route = "$CARD_DETAILS_ROUTE/{$CARD_ID}",
+            arguments = listOf(navArgument(CARD_ID) { type = NavType.StringType })
         ) { backStackEntry ->
-            CardDetails(cardId = backStackEntry.arguments?.getString(CardId) ?: "")
+            val arguments = requireNotNull(backStackEntry.arguments)
+            val cardId = arguments.getString(CARD_ID)
+            CardDetails(cardId = cardId ?: "")
         }
         composable(SETTINGS_ROUTE) {
         }

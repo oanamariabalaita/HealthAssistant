@@ -2,8 +2,6 @@
 object Dependencies {
 
     const val androidMaterial = "com.google.android.material:material:${Versions.material}"
-    const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val androidCore = "androidx.core:core-ktx:${Versions.appCompat}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
@@ -14,11 +12,13 @@ object Dependencies {
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
     const val koin = "io.insert-koin:koin-android:${Versions.koin}"
-    const val koinExt = "io.insert-koin:koin-android-ext:${Versions.koin}"
+    const val koinExt = "io.insert-koin:koin-android-ext:${Versions.koinExt}"
     const val koinWorkManager = "io.insert-koin:koin-androidx-workmanager:${Versions.koin}"
     const val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
     const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    const val systemUiController =
+        "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiControllerVersion}"
 
     // Navigation
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"

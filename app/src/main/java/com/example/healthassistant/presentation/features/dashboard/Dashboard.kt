@@ -1,14 +1,15 @@
 package com.example.healthassistant.presentation.features.dashboard
 
 import android.content.Context
-import android.widget.Toast
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
@@ -31,6 +33,7 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,7 +44,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -51,7 +54,12 @@ import com.example.healthassistant.data.model.HealthIndexEntity
 import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.domain.model.HealthSummary
 import com.example.healthassistant.domain.utils.extensions.toModel
-import kotlinx.coroutines.flow.onEach
+import com.example.healthassistant.presentation.components.DraggableCard
+import com.example.healthassistant.presentation.components.Loader
+import com.example.healthassistant.presentation.theme.blue3
+import com.example.healthassistant.presentation.utils.extensions.verticalGradientBackground
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.koin.androidx.compose.getViewModel
@@ -60,60 +68,94 @@ import java.util.Scanner
 
 @Composable
 fun Dashboard(
+    modifier: Modifier,
     applicationContext: Context,
-    navigateToSettings: () -> Unit,
-    navigateToStatistics: () -> Unit,
     navigateToHealthCardDetails: () -> Unit,
     navigateToHealthSummaryDetails: () -> Unit,
     dashboardViewModel: DashboardViewModel = getViewModel()
 ) {
-    when (dashboardViewModel.healthIndicesViewState.collectAsState().value) {
-        is HealthIndicesViewState.Success -> {
-            val string = applicationContext.resources
-                .openRawResource(R.raw.health_index)
-            val index = Json.decodeFromString<HealthIndexEntity>(
-                """${convertStreamToString(string)}"""
-            )
-            HealthIndicesList(listOf(index.toModel))
+
+    LaunchedEffect(key1 = "effect", block = {
+        launch {
+            dashboardViewModel.effect.collect { effect ->
+                when (effect) {
+                    DashboardEffect.LoadHealthIndicesError -> {
+                    }
+                    DashboardEffect.LoadHealthSummaryError -> {
+                    }
+                    DashboardEffect.LoadUserError -> {
+                    }
+                    is DashboardEffect.ShowToast -> {
+                    }
+                }
+            }
         }
-        is HealthIndicesViewState.Error -> {
-            val string = stringResource(R.raw.health_index)
-            val index = Json.decodeFromString<HealthIndexEntity>(
-                string
+    })
+
+    val viewState = dashboardViewModel.state.collectAsState()
+
+    Surface(modifier = Modifier.fillMaxHeight()) {
+        Box(
+            modifier = Modifier.verticalGradientBackground(
+                listOf(
+                    Color.White,
+                    blue3.copy(alpha = 0.2f)
+                )
             )
-            HealthIndicesList(listOf(index.toModel))
-        }
-    }
-    dashboardViewModel.effectFlow.onEach {
-        when (it) {
-            is DashboardEffect.ShowToast -> {
-                Toast.makeText(
-                    applicationContext,
-                    "Toast: is working ok",
-                    Toast.LENGTH_SHORT
-                ).show()
+        ) {
+            if (viewState.value.healthIndicesLoading) Loader()
+            else {
+                val string = applicationContext.resources
+                    .openRawResource(R.raw.indices_mock)
+                val index = Json.decodeFromString<List<HealthIndexEntity>>(
+                    """${convertStreamToString(string)}"""
+                )
+                HealthIndicesList(index.map { it.toModel })
             }
         }
     }
 }
 
-fun convertStreamToString(x: InputStream?): String? {
+fun convertStreamToString(x: InputStream?): String
+? {
     val s = Scanner(x).useDelimiter("\\A")
     return if (s.hasNext()) s.next() else ""
 }
 
 @Composable
 fun HealthIndicesList(indices: List<HealthIndex>) {
+
     LazyColumn {
-        items(indices) { index ->
-            HealthIndexCard(index)
+        items(indices) { healthIndex ->
+            DraggableCard(
+                item = healthIndex,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(70.dp)
+                    .padding(
+                        top = 16.dp,
+                        bottom = 16.dp,
+                        start = 16.dp,
+                        end = 16.dp
+                    ),
+                { _, _ -> }
+            ) {
+                HealthIndexCard(healthIndex)
+            }
         }
     }
 }
 
 @Composable
 fun HealthIndexCard(index: HealthIndex) {
-
+    Card(
+        Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(20.dp), elevation = 8.dp
+    ) {
+        Text(index.descriptiveVal + ": " + index.quantitativeVal)
+    }
 }
 
 @Composable
@@ -122,6 +164,10 @@ fun HealthSummaryCard(
     onSummaryChange: (HealthSummary) -> Unit,
     onSummaryClick: () -> Unit
 ) {
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp.dp
+    val summaryCardHeight = screenHeight - 200.dp
+
     Row(verticalAlignment = Alignment.CenterVertically) {
         Surface(
             modifier = Modifier
@@ -144,51 +190,32 @@ fun HealthSummaryCard(
     }
 }
 
-private fun handleIndicesViewState(state: HealthIndicesViewState) {
-    when (state) {
-        is HealthIndicesViewState.Success -> {
-        }
-        is HealthIndicesViewState.Error -> {
-        }
-    }
-}
-
-private fun handleUserViewState(state: UserViewState) {
-    when (state) {
-        is UserViewState.Success -> {
-        }
-        is UserViewState.Error -> {
-        }
-        is UserViewState.Empty -> {
-        }
-    }
-}
-
 @Composable
-fun NotificationsButton() {
-}
-
-@Composable
-fun MenuFloatingButton() {
-
-}
-
-@Composable
-fun HealthSummaryCard() {
+fun HealthSummaryCard(summary: HealthSummary) {
     val paddingWithStatusBarHeight = 40.dp
     var extended by remember { mutableStateOf(false) }
     val animateHeight = if (extended) 500.dp else 200.dp
     val opacity = if (extended) 0.8f else 1f
+
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .height(animateDpAsState(animateHeight).value)
             .alpha(animateFloatAsState(opacity).value)
             .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-            .padding(top = paddingWithStatusBarHeight, bottom = 8.dp, start = 8.dp, end = 8.dp)
+            .padding(
+                top = paddingWithStatusBarHeight,
+                bottom = 8.dp,
+                start = 8.dp,
+                end = 8.dp
+            )
     ) {
         val (title, image, price, asset, dailyChange, send, receive, scan) = createRefs()
         val horizontalCenterGuideline = createGuidelineFromStart(0.5f)
+
+        Column() {
+        }
+
         Text(
             text = "Health Report",
             style = typography.body1,

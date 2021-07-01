@@ -7,8 +7,8 @@ sealed class Result<T> {
     suspend fun execute(
         success: (suspend (T) -> Unit)? = null,
         error: (suspend (Throwable) -> Unit)? = null,
-        before: (() -> Unit)? = null,
-        after: (() -> Unit)? = null
+        before: (suspend () -> Unit)? = null,
+        after: (suspend () -> Unit)? = null
     ) {
         before?.invoke()
         when (this) {
