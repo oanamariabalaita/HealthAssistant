@@ -13,7 +13,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.healthassistant.presentation.features.cardDetails.CardDetails
 import com.example.healthassistant.presentation.features.dashboard.Dashboard
 import com.example.healthassistant.presentation.features.intro.Intro
+import com.example.healthassistant.presentation.features.notifications.Notifications
 import com.example.healthassistant.presentation.features.profile.Profile
+import com.example.healthassistant.presentation.features.settings.Settings
+import com.example.healthassistant.presentation.features.statistics.Statistics
 import com.example.healthassistant.presentation.router.Destinations.ADD_RECORD_ROUTE
 import com.example.healthassistant.presentation.router.Destinations.CARD_DETAILS_ROUTE
 import com.example.healthassistant.presentation.router.Destinations.CardDetailArgs.CARD_ID
@@ -49,6 +52,7 @@ fun HealthAssistantRouter(
             )
         }
         composable(NOTIFICATIONS_ROUTE) {
+            Notifications()
         }
         composable(ADD_RECORD_ROUTE) {
         }
@@ -61,11 +65,13 @@ fun HealthAssistantRouter(
             CardDetails(cardId = cardId ?: "")
         }
         composable(SETTINGS_ROUTE) {
+            Settings()
         }
         composable(PROFILE_ROUTE) { backStackEntry ->
             Profile(backStackEntry.arguments?.getString("userId"))
         }
         composable(STATISTICS_ROUTE) {
+            Statistics()
         }
     }
 }

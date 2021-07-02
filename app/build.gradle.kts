@@ -65,6 +65,10 @@ dependencies {
         implementation(workManager)
         implementation(scopeMob)
         implementation(stdlib)
+
+        // Accompanist
+        implementation(coil)
+        implementation(insets)
         implementation(systemUiController)
 
         // UI

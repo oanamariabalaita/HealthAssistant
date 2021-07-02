@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -44,6 +45,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -54,8 +56,10 @@ import com.example.healthassistant.data.model.HealthIndexEntity
 import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.domain.model.HealthSummary
 import com.example.healthassistant.domain.utils.extensions.toModel
+import com.example.healthassistant.presentation.components.DividerComponent
 import com.example.healthassistant.presentation.components.DraggableCard
 import com.example.healthassistant.presentation.components.Loader
+import com.example.healthassistant.presentation.theme.HealthAppTheme
 import com.example.healthassistant.presentation.theme.blue3
 import com.example.healthassistant.presentation.utils.extensions.verticalGradientBackground
 import kotlinx.coroutines.flow.collect
@@ -74,26 +78,52 @@ fun Dashboard(
     navigateToHealthSummaryDetails: () -> Unit,
     dashboardViewModel: DashboardViewModel = getViewModel()
 ) {
+    val string = applicationContext.resources
+        .openRawResource(R.raw.indices_mock)
+    val index = Json.decodeFromString<List<HealthIndexEntity>>(
+        """${convertStreamToString(string)}"""
+    )
+    val mock = index.map { it.toModel }
+    val state = dashboardViewModel.state.collectAsState().value
 
-    LaunchedEffect(key1 = "effect", block = {
+    LaunchedEffect(key1 = "DASHBOARD_EFFECT", block = {
         launch {
-            dashboardViewModel.effect.collect { effect ->
-                when (effect) {
-                    DashboardEffect.LoadHealthIndicesError -> {
-                    }
-                    DashboardEffect.LoadHealthSummaryError -> {
-                    }
-                    DashboardEffect.LoadUserError -> {
-                    }
-                    is DashboardEffect.ShowToast -> {
-                    }
-                }
+            dashboardViewModel.effect.collect {
+                handleEffects(it)
             }
         }
     })
+    DashboardContent(modifier = modifier, state, mock)
+}
 
-    val viewState = dashboardViewModel.state.collectAsState()
+@Composable
+private fun DashboardContent(
+    modifier: Modifier,
+    state: DashboardState,
+    mock: List<HealthIndex>
+) {
+    Box(
+        modifier = modifier
+            .background(
+                color = HealthAppTheme.colors.baseColors.background,
+                shape = RectangleShape
+            )
+    ) {
+        DividerComponent()
+        Column {
+            IndicesListContent(
+                state = state,
+                mock = mock
+            )
+        }
+    }
+}
 
+@Composable
+private fun IndicesListContent(
+    state: DashboardState,
+    mock: List<HealthIndex>
+) {
     Surface(modifier = Modifier.fillMaxHeight()) {
         Box(
             modifier = Modifier.verticalGradientBackground(
@@ -103,15 +133,8 @@ fun Dashboard(
                 )
             )
         ) {
-            if (viewState.value.healthIndicesLoading) Loader()
-            else {
-                val string = applicationContext.resources
-                    .openRawResource(R.raw.indices_mock)
-                val index = Json.decodeFromString<List<HealthIndexEntity>>(
-                    """${convertStreamToString(string)}"""
-                )
-                HealthIndicesList(index.map { it.toModel })
-            }
+            if (state.healthIndicesLoading) Loader()
+            else HealthIndicesList(mock)
         }
     }
 }
@@ -255,5 +278,18 @@ fun HealthSummaryCard(summary: HealthSummary) {
                     end.linkTo(parent.end)
                 }
         )
+    }
+}
+
+fun handleEffects(effect: DashboardEffect) {
+    when (effect) {
+        DashboardEffect.LoadHealthIndicesError -> {
+        }
+        DashboardEffect.LoadHealthSummaryError -> {
+        }
+        DashboardEffect.LoadUserError -> {
+        }
+        is DashboardEffect.ShowToast -> {
+        }
     }
 }

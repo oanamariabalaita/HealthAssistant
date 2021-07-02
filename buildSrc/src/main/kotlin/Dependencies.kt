@@ -17,6 +17,12 @@ object Dependencies {
     const val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
     const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+
+    // Accompanist
+    const val version = "0.12.0"
+    const val coil = "com.google.accompanist:accompanist-coil:${Versions.systemUiControllerVersion}"
+    const val insets =
+        "com.google.accompanist:accompanist-insets:${Versions.systemUiControllerVersion}"
     const val systemUiController =
         "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiControllerVersion}"
 
