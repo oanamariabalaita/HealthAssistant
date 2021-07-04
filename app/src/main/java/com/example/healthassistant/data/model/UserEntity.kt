@@ -16,17 +16,17 @@ data class UserEntity(
     val userName: String,
 
     @ColumnInfo(name = "gender")
-    val userGender: String,
+    val userGender: String?,
 
     @ColumnInfo(name = "birthyear")
-    val userBirthYear: Int,
+    val userBirthYear: Int?,
 
     @ColumnInfo(name = "height")
-    val userHeight: Float,
+    val userHeight: Float?,
 
     @ColumnInfo(name = "weight")
-    val userWeight: Float,
+    val userWeight: Float?,
 
     @ColumnInfo(name = "activity")
-    val userActivityLevel: String
+    val userActivityLevel: String?
 )

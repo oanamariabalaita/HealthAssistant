@@ -8,13 +8,13 @@ plugins {
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
     }
     dependencies {
         with(Classpaths) {
             classpath(androidBuildTools)
             classpath(kotlinGradlePlugin)
+            classpath(kotlinExtensions)
             classpath(navigation)
             classpath(serialization)
         }
@@ -24,8 +24,23 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven(url = "https://jitpack.io")
         maven(url = "https://maven.google.com")
+        maven(url = "https://kotlin.bintray.com/kotlinx")
+        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
+        if (Versions.compose.endsWith("SNAPSHOT")) {
+            maven(url = "https://androidx.dev/snapshots/builds/${Versions.composeSnapshot}/artifacts/repository/")
+        }
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "11"
+        allWarningsAsErrors = true
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+        freeCompilerArgs += "-Xopt-in=kotlin.Experimental"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
     }
 }

@@ -2,63 +2,85 @@ package com.example.healthassistant.presentation.features.dashboard
 
 import androidx.lifecycle.viewModelScope
 import com.example.healthassistant.domain.interactor.GetHealthIndicesUseCase
+import com.example.healthassistant.domain.interactor.GetHealthSummaryUseCase
 import com.example.healthassistant.domain.interactor.GetUserUseCase
 import com.example.healthassistant.domain.model.HealthIndex
-import com.example.healthassistant.domain.model.User
+import com.example.healthassistant.domain.model.HealthSummary
 import com.example.healthassistant.presentation.base.BaseViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import javax.inject.Inject
 
-class DashboardViewModel @Inject constructor(
+class DashboardViewModel(
     private val healthIndicesUseCase: GetHealthIndicesUseCase,
+    private val healthSummaryUseCase: GetHealthSummaryUseCase,
     private val userUseCase: GetUserUseCase
-) : BaseViewModel() {
+) : BaseViewModel(), DashboardEvent {
 
-    private val _userUiState = MutableStateFlow(UserViewState.Empty)
-    private val _healthIndicesUiState =
-        MutableStateFlow<HealthIndicesViewState>(HealthIndicesViewState.Success(emptyList()))
-    val healthIndicesViewState: StateFlow<HealthIndicesViewState>
-        get() = _healthIndicesUiState
-    val userViewState: StateFlow<UserViewState>
-        get() = _userUiState
+    private val _state = MutableStateFlow(DashboardState())
+    private val _effect = MutableSharedFlow<DashboardEffect>()
+
+    val state = _state.asStateFlow()
+    val effect = _effect.asSharedFlow()
+    val event = this as DashboardEvent
+
+    init {
+        loadHealthSummary("982")
+        loadHealthIndicesList("982")
+    }
 
     private fun loadHealthIndicesList(userId: String) {
         viewModelScope.launch {
             healthIndicesUseCase
                 .run(GetHealthIndicesUseCase.Params(userId))
                 .execute(
-                    ::loadHealthIndicesSuccess,
-                    ::loadHealthIndicesFailed
+                    success = ::loadHealthIndicesSuccess,
+                    error = ::loadHealthIndicesFailed,
+                    before = { _state.update(healthIndicesLoading = true) },
+                    after = { _state.update(healthIndicesLoading = false) }
                 )
         }
     }
 
-    private fun loadHealthIndicesFailed(error: Throwable) {
-        Timber.e(error)
-        _healthIndicesUiState.value = HealthIndicesViewState.Error(error)
-    }
-
-    private fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
-        indices.let {
-            _healthIndicesUiState.value = HealthIndicesViewState.Success(indices)
+    private fun loadHealthSummary(userId: String) {
+        viewModelScope.launch {
+            healthSummaryUseCase
+                .run(GetHealthSummaryUseCase.Params(userId))
+                .execute(
+                    success = ::loadHealthSummarySuccess,
+                    error = ::loadHealthSummaryFailed,
+                    before = { _state.update(summaryLoading = true) },
+                    after = { _state.update(summaryLoading = false) }
+                )
         }
     }
-}
 
-sealed class HealthIndicesViewState {
-    data class Success(val indices: List<HealthIndex>) : HealthIndicesViewState()
-    data class Error(val exception: Throwable) : HealthIndicesViewState()
-}
+    private suspend fun loadHealthIndicesFailed(error: Throwable) {
+        Timber.e(error)
+        _effect.emit(DashboardEffect.ShowToast("Test: Health Indices List Error"))
+    }
 
-sealed class UserViewState {
-    data class Success(val user: User) : UserViewState()
-    data class Error(val exception: Throwable) : UserViewState()
-    object Empty : UserViewState()
-}
+    private suspend fun loadHealthIndicesSuccess(indices: List<HealthIndex>) {
+        _state.update(indices = indices)
+    }
 
-sealed class AppViewEffect {
-    data class ShowToast(val message: String) : AppViewEffect()
+    private suspend fun loadHealthSummaryFailed(error: Throwable) {
+        Timber.e(error)
+        _effect.emit(DashboardEffect.ShowToast("Test: HealthSummary Error"))
+    }
+
+    private suspend fun loadHealthSummarySuccess(healthSummary: HealthSummary) {
+        _state.update(healthSummaryScore = healthSummary.healthIndexScore)
+    }
+
+    override fun onCardDetailsClick(cardId: Long) {}
+
+    override fun onHealthSummaryClick() {}
+
+    override fun onStatisticsClick() {}
+
+    override fun onRefreshSwipe() {}
 }

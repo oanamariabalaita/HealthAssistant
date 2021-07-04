@@ -1,24 +1,59 @@
 @Suppress("SpellCheckingInspection")
 object Dependencies {
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+
     const val androidMaterial = "com.google.android.material:material:${Versions.material}"
-    const val constraintLayout =
-        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val androidCore = "androidx.core:core-ktx:${Versions.appCompat}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val kotlinJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val koin = "io.insert-koin:koin-android:${Versions.koin}"
+    const val koinExt = "io.insert-koin:koin-android-ext:${Versions.koinExt}"
+    const val koinWorkManager = "io.insert-koin:koin-androidx-workmanager:${Versions.koin}"
+    const val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
+    const val scopeMob = "com.github.submob:scopemob:${Versions.scopeMob}"
+    const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+
+    // Accompanist
+    const val version = "0.12.0"
+    const val coil = "com.google.accompanist:accompanist-coil:${Versions.systemUiControllerVersion}"
+    const val insets =
+        "com.google.accompanist:accompanist-insets:${Versions.systemUiControllerVersion}"
+    const val systemUiController =
+        "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiControllerVersion}"
+
+    // Navigation
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
-    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    const val scopeMob = "com.github.SUB-MOB:scopemob:${Versions.scopeMob}"
+    const val navigationDynamicFeatures =
+        "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
+    const val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
+    const val navigationCompose =
+        "androidx.navigation:navigation-compose:${Versions.navigationCompose}"
+
+    // Compose
+    const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
+    const val composeConstraintLayout =
+        "androidx.constraintlayout:constraintlayout-compose:${Versions.composeConstraintLayout}"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    const val composeMaterialIcons =
+        "androidx.compose.material:material-icons-core:${Versions.compose}"
+    const val composeMaterialIconsExt =
+        "androidx.compose.material:material-icons-extended:${Versions.compose}"
+    const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    const val composeViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModel}"
+    const val composeLiveData =
+        "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+    const val composeRxJava2 = "androidx.compose.runtime:runtime-rxjava2:${Versions.compose}"
+    const val composeLottie = "com.airbnb.android:lottie-compose:${Versions.composeLottie}"
 
     // Lifecycle
     const val lifecycleExtensions =
@@ -56,4 +91,5 @@ object Dependencies {
     const val mockK = "io.mockk:mockk:${Versions.mockK}"
     const val coroutinesTest =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val composeJUnit4 = "androidx.compose.ui:ui-test-junit4:${Versions.composeJUnit4}"
 }

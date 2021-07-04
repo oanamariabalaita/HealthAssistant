@@ -1,36 +1,20 @@
 package com.example.healthassistant.domain.di
 
-import com.example.healthassistant.data.api.HealthApiService
-import com.example.healthassistant.data.api.UserApiService
-import com.example.healthassistant.data.db.HealthDao
-import com.example.healthassistant.data.db.UserDao
 import com.example.healthassistant.domain.interactor.GetHealthIndicesUseCase
+import com.example.healthassistant.domain.interactor.GetHealthSummaryUseCase
 import com.example.healthassistant.domain.interactor.GetUserUseCase
 import com.example.healthassistant.domain.repository.HealthRepository
+import com.example.healthassistant.domain.repository.PreferencesRepository
 import com.example.healthassistant.domain.repository.UserRepository
-import dagger.Module
-import dagger.Provides
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 
-@Module
-class InteractionModule {
+val interactionModule = module {
 
-    @Provides
-    fun providesIGetUserUseCase(userRepository: UserRepository): GetUserUseCase =
-        GetUserUseCase(userRepository)
-
-    @Provides
-    fun providesIHealthIndicatorUseCase(healthRepository: HealthRepository) =
-        GetHealthIndicesUseCase(healthRepository)
-
-    @Provides
-    fun providesHealthRepository(
-        healthDao: HealthDao,
-        healthService: HealthApiService
-    ): HealthRepository = HealthRepository(healthDao, healthService)
-
-    @Provides
-    fun providesUserRepository(
-        userDao: UserDao,
-        userService: UserApiService
-    ): UserRepository = UserRepository(userDao, userService)
+    single { UserRepository(get(), get()) }
+    single { HealthRepository(get(), get()) }
+    single { PreferencesRepository(get()) }
+    single { GetUserUseCase(get()) }
+    single { GetHealthIndicesUseCase(androidContext(), get()) }
+    single { GetHealthSummaryUseCase(get()) }
 }

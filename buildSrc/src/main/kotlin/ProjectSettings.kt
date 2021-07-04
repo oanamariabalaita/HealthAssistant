@@ -9,7 +9,7 @@ object ProjectSettings {
     private const val minorVersion = 0
 
     const val applicationId = "com.example.healthassistant"
-    const val projectCompileSdkVersion = 29
+    const val projectCompileSdkVersion = 30
     const val projectMinSdkVersion = 21
     const val projectTargetSdkVersion = 29
 

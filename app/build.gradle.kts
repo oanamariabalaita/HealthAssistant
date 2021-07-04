@@ -1,20 +1,20 @@
 plugins {
     with(Plugins) {
         id(application)
+        kotlin(android)
         id(safeargs)
         id(serialization)
-        kotlin(android)
         kotlin(kapt)
     }
 }
 
 android {
     with(ProjectSettings) {
-        compileSdkVersion(projectCompileSdkVersion)
+        compileSdk = projectCompileSdkVersion
 
         defaultConfig {
-            minSdkVersion(projectMinSdkVersion)
-            targetSdkVersion(projectTargetSdkVersion)
+            minSdk = projectMinSdkVersion
+            targetSdk = projectTargetSdkVersion
 
             multiDexEnabled = true
             vectorDrawables.useSupportLibrary = true
@@ -25,26 +25,36 @@ android {
         }
 
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "11"
             freeCompilerArgs = listOf("-Xjvm-default=compatibility")
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
         }
 
         buildFeatures {
+            compose = true
             viewBinding = true
             dataBinding = true
         }
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = Versions.compose
+        }
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "11"
+        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 }
 
 dependencies {
     with(Dependencies) {
-        implementation(kotlin)
-        implementation(kotlinJdk8)
         implementation(appCompat)
         implementation(androidCore)
         implementation(timber)
@@ -54,17 +64,18 @@ dependencies {
         implementation(workManagerRx)
         implementation(workManager)
         implementation(scopeMob)
+        implementation(stdlib)
+
+        // Accompanist
+        implementation(coil)
+        implementation(insets)
+        implementation(systemUiController)
 
         // UI
         implementation(androidMaterial)
-        implementation(constraintLayout)
         implementation(recyclerView)
         implementation(glide)
         implementation(chart)
-
-        // DI
-        implementation(dagger)
-        implementation(daggerAndroidSupport)
 
         // Network
         implementation(retrofit)
@@ -74,13 +85,31 @@ dependencies {
         implementation(kotlinSerialization)
         implementation(kotlinSerializationConverter)
 
-        // Local DB
+        // Room
         implementation(room)
         implementation(roomKtx)
 
         // Navigation
         implementation(navigation)
         implementation(navigationUi)
+        implementation(navigationDynamicFeatures)
+        implementation(navigationTesting)
+        implementation(navigationCompose)
+
+        // Compose
+        implementation(composeUi)
+        implementation(composeRuntime)
+        implementation(composeUiTooling)
+        implementation(composeFoundation)
+        implementation(composeConstraintLayout)
+        implementation(composeMaterial)
+        implementation(composeMaterialIcons)
+        implementation(composeMaterialIconsExt)
+        implementation(composeActivity)
+        implementation(composeViewModel)
+        implementation(composeLiveData)
+        implementation(composeRxJava2)
+        implementation(composeLottie)
 
         // Lifecycle
         implementation(lifecycleCommon)
@@ -93,15 +122,20 @@ dependencies {
         implementation(coroutines)
         implementation(coroutinesCore)
 
+        // Koin
+        implementation(koin)
+        implementation(koinExt)
+        implementation(koinCompose)
+        implementation(koinWorkManager)
+
         // Test
         testImplementation(jUnit)
         testImplementation(mockK)
         testImplementation(coroutinesTest)
+        androidTestImplementation(composeJUnit4)
     }
 
     with(Annotations) {
-        kapt(daggerCompiler)
-        kapt(daggerProcessor)
         kapt(room)
     }
 }

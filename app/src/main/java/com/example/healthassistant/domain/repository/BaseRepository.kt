@@ -17,7 +17,8 @@ open class BaseRepository {
     suspend fun <T> apiRequest(suspendBlock: suspend () -> T) =
         withContext(Dispatchers.IO) {
             try {
-                Result.Success(suspendBlock.invoke())
+                val result = suspendBlock.invoke()
+                Result.Success(result)
             } catch (e: Throwable) {
                 Result.Error(
                     when (e) {

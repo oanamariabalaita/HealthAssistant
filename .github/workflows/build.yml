@@ -1,0 +1,40 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Build the app
+        run: ./gradlew build --parallel
+
+      - name: Notify slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: health-assistant
+          status: SUCCESS
+          color: good
+
+      - name: Notify slack fail
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: health-assistant
+          status: FAILED
+          color: danger

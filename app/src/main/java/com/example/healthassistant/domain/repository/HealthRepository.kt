@@ -2,12 +2,9 @@ package com.example.healthassistant.domain.repository
 
 import com.example.healthassistant.data.api.HealthApiService
 import com.example.healthassistant.data.db.HealthDao
-import com.example.healthassistant.domain.utils.networking.toModel
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.healthassistant.domain.utils.extensions.toModel
 
-@Singleton
-class HealthRepository @Inject constructor(
+class HealthRepository(
     private val healthDao: HealthDao,
     private val healthService: HealthApiService
 ) : BaseRepository() {
@@ -16,22 +13,13 @@ class HealthRepository @Inject constructor(
         apiRequest {
             healthService
                 .getIndicesList(userId)
-                .map { it.toModel() }
+                .map { it.toModel }
         }
-//            .also { apiResult ->
-//            when (apiResult) {
-//                is Result.Success -> {
-//                    daoRequest {
-//                        healthDao.postIndicesList(userId, apiResult.data.map { it.toEntity() })
-//                    }
-//                }
-//                is Result.Error -> {
-//                    daoRequest {
-//                        healthDao
-//                            .getIndicesList(userId)
-//                            .map { it.toModel() }
-//                    }
-//                }
-//            }
-//        }
+
+    suspend fun getHealthSummary(userId: String) =
+        apiRequest {
+            healthService
+                .getHealthSumamry(userId)
+                .toModel
+        }
 }

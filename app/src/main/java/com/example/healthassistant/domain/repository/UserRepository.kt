@@ -2,18 +2,15 @@ package com.example.healthassistant.domain.repository
 
 import com.example.healthassistant.data.api.UserApiService
 import com.example.healthassistant.data.db.UserDao
-import com.example.healthassistant.domain.utils.networking.toModel
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.healthassistant.domain.utils.extensions.toModel
 
-@Singleton
-class UserRepository @Inject constructor(
+class UserRepository(
     private val userDao: UserDao,
     private val userService: UserApiService
 ) : BaseRepository() {
 
     suspend fun getUserInfo(userId: Long) =
         apiRequest {
-            userService.getUserInfo(userId).toModel()
+            userService.getUserInfo(userId).toModel
         }
 }
