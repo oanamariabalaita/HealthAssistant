@@ -1,6 +1,5 @@
 package com.example.healthassistant.presentation.router
 
-import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -31,7 +30,6 @@ import com.example.healthassistant.presentation.router.Destinations.STATISTICS_R
 fun HealthAssistantRouter(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    applicationContext: Context,
     startDestination: String = DASHBOARD_ROUTE
 ) {
     val actions = remember(navController) { Actions(navController) }
@@ -46,9 +44,11 @@ fun HealthAssistantRouter(
         composable(DASHBOARD_ROUTE) {
             Dashboard(
                 modifier,
-                applicationContext,
                 actions.navigateToDashboard,
                 actions.navigateToDashboard,
+                actions.navigateToDashboard,
+                actions.navigateToDashboard,
+                actions.navigateToDashboard
             )
         }
         composable(NOTIFICATIONS_ROUTE) {

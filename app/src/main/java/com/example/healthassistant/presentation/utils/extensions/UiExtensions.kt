@@ -29,8 +29,8 @@ fun Modifier.verticalGradientBackground(
 ) = gradientBackground(colors) { gradientColors, size ->
     Brush.verticalGradient(
         colors = gradientColors,
-        startY = 0f,
-        endY = size.width
+        startY = size.width,
+        endY = 0f
     )
 }
 

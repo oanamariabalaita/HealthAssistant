@@ -55,7 +55,7 @@ fun DraggableCard(
                     }
                 )
                 .then(graphicLayer)
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(6.dp))
         ) {
             content()
         }

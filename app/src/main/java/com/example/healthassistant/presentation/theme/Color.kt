@@ -2,37 +2,30 @@ package com.example.healthassistant.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val green200 = Color(0xFF44B3E6)
-val green700 = Color(0xFF0A93D1)
-val green800 = Color(0xFF0981B8)
-val greenDarkPrimary = Color(0xFF073A52)
+val Green200 = Color(0xFF44B3E6)
+val Green700 = Color(0xFF0A93D1)
+val Green800 = Color(0xFF0981B8)
+val GreenDarkPrimary = Color(0xFF073A52)
 
-val blue200 = Color(0xFF4080FF)
-val blue700 = Color(0xff0336ff)
-val blue800 = Color(0xff0035c9)
-val blueDarkPrimary = Color(0xff1c1d24)
+val Navy1 = Color(0xFF37ECBA)
+val Navy2 = Color(0xFF54CEC6)
+val Navy3 = Color(0xFF72AFD3)
 
-val purple200 = Color(0xFF8E58EE)
-val purple700 = Color(0xFF794FC5)
-val purple800 = Color(0xFF542E96)
-val purpleDarkPrimary = Color(0xFF351F5C)
-
-val blue1 = Color(0xFF37ECBA)
-val blue2 = Color(0xFF54CEC6)
-val blue3 = Color(0xFF72AFD3)
-
-val Shadow11 = Color(0xff001787)
-val Shadow10 = Color(0xff00119e)
-val Shadow9 = Color(0xff0009b3)
-val Shadow8 = Color(0xff0200c7)
-val Shadow7 = Color(0xff0e00d7)
-val Shadow6 = Color(0xff2a13e4)
-val Shadow5 = Color(0xff4b30ed)
-val Shadow4 = Color(0xff7057f5)
-val Shadow3 = Color(0xff9b86fa)
-val Shadow2 = Color(0xffc8bbfd)
-val Shadow1 = Color(0xffded6fe)
-val Shadow0 = Color(0xfff4f2ff)
+val Blue200 = Color(0xFF4080FF)
+val Blue700 = Color(0xff0336ff)
+val Blue800 = Color(0xff0035c9)
+val Blue11 = Color(0xff001787)
+val Blue10 = Color(0xff00119e)
+val Blue9 = Color(0xff0009b3)
+val Blue8 = Color(0xff0200c7)
+val Blue7 = Color(0xff0e00d7)
+val Blue6 = Color(0xff2a13e4)
+val Blue5 = Color(0xff4b30ed)
+val Blue4 = Color(0xff7057f5)
+val Blue3 = Color(0xff9b86fa)
+val Blue2 = Color(0xffc8bbfd)
+val Blue1 = Color(0xffded6fe)
+val Blue0 = Color(0xfff4f2ff)
 
 val Ocean11 = Color(0xff005687)
 val Ocean10 = Color(0xff006d9e)
@@ -46,6 +39,11 @@ val Ocean3 = Color(0xff86f7fa)
 val Ocean2 = Color(0xffbbfdfd)
 val Ocean1 = Color(0xffd6fefe)
 val Ocean0 = Color(0xfff2ffff)
+
+val Purple200 = Color(0xFF8E58EE)
+val Purple700 = Color(0xFF794FC5)
+val Purple800 = Color(0xFF542E96)
+val PurpleDarkPrimary = Color(0xFF351F5C)
 
 val Lavender11 = Color(0xff170085)
 val Lavender10 = Color(0xff23009e)
@@ -90,6 +88,7 @@ val FunctionalGrey = Color(0xfff6f6f6)
 val FunctionalDarkGrey = Color(0xff2e2e2e)
 
 const val AlphaNearOpaque = 0.95f
+const val AlphaNearTransparent = 0.05f
 
 enum class ColorPallet {
     PURPLE, OCEAN, BLUE

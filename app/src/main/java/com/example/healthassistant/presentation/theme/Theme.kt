@@ -29,8 +29,9 @@ fun HealthAppTheme(
     val sysUiController = rememberSystemUiController()
 
     SideEffect {
-        sysUiController.setSystemBarsColor(
-            color = colors.baseColors.background.copy(alpha = AlphaNearOpaque)
+        sysUiController.setStatusBarColor(color = colors.baseColors.primary)
+        sysUiController.setNavigationBarColor(
+            color = colors.baseColors.primary.copy(alpha = AlphaNearTransparent)
         )
     }
 
@@ -171,19 +172,19 @@ private val darkOceanColorPalette = HealthAppColors(
     iconSecondary = Neutral7,
     iconInteractive = Neutral0,
     iconInteractiveInactive = Neutral1,
-    notificationBadge = Ocean8,
-    primary = Ocean8,
-    primaryVariant = Ocean8,
-    secondary = Ocean8,
-    secondaryVariant = Ocean8,
-    background = Ocean8,
-    surface = Ocean8,
+    notificationBadge = FunctionalGreen,
+    primary = GreenDarkPrimary,
+    primaryVariant = Ocean9,
+    secondary = Blue8,
+    secondaryVariant = Blue9,
+    background = Color.White,
+    surface = Color.White,
     error = FunctionalRed,
-    onPrimary = Ocean8,
-    onSecondary = Ocean8,
-    onBackground = Ocean8,
-    onSurface = Ocean8,
-    onError = Ocean8,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
+    onError = Color.White,
     isLight = false
 )
 
@@ -229,19 +230,19 @@ private val darkBlueColorPalette = HealthAppColors(
     iconSecondary = Neutral7,
     iconInteractive = Neutral0,
     iconInteractiveInactive = Neutral1,
-    notificationBadge = Ocean8,
+    notificationBadge = FunctionalGreen,
     primary = Ocean8,
-    primaryVariant = Ocean8,
-    secondary = Ocean8,
-    secondaryVariant = Ocean8,
-    background = Ocean8,
-    surface = Ocean8,
+    primaryVariant = Ocean9,
+    secondary = Blue8,
+    secondaryVariant = Blue9,
+    background = Color.White,
+    surface = Color.White,
     error = FunctionalRed,
-    onPrimary = Ocean8,
-    onSecondary = Ocean8,
-    onBackground = Ocean8,
-    onSurface = Ocean8,
-    onError = Ocean8,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
+    onError = Color.White,
     isLight = false
 )
 

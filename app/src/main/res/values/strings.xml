@@ -14,7 +14,6 @@
     <string name="message_grant_permission">This app needs permission to use this feature. You can grant them in app settings.</string>
 
     <!--Errors-->
-    <string name="network_error_connection">Problem with the Internet connection.</string>
     <string name="network_error_server">Server is temporarily not available.</string>
     <string name="network_error_unexpected">An unexpected error occurred.</string>
     <string name="error_message_no_more_space">Your storage is unavailable.</string>
@@ -24,6 +23,9 @@
     <string name="empty_password_error_message">Password cannot be empty</string>
     <string name="login_failure_error">Login failed</string>
     <string name="empty_email_error_message">Email cannot be blank</string>
+    <string name="connection_error_title">Connection error</string>
+    <string name="connection_error_message">Unable to fetch data.\nCheck your internet connection and try again.</string>
+    <string name="retry_label">Retry</string>
 
     <!--Bottom Menu-->
     <string name="bottom_menu_profile">Profile</string>

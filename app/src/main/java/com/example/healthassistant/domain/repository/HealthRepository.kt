@@ -15,20 +15,11 @@ class HealthRepository(
                 .getIndicesList(userId)
                 .map { it.toModel }
         }
-//            .also { apiResult ->
-//            when (apiResult) {
-//                is Result.Success -> {
-//                    daoRequest {
-//                        healthDao.postIndicesList(userId, apiResult.data.map { it.toEntity() })
-//                    }
-//                }
-//                is Result.Error -> {
-//                    daoRequest {
-//                        healthDao
-//                            .getIndicesList(userId)
-//                            .map { it.toModel() }
-//                    }
-//                }
-//            }
-//        }
+
+    suspend fun getHealthSummary(userId: String) =
+        apiRequest {
+            healthService
+                .getHealthSumamry(userId)
+                .toModel
+        }
 }

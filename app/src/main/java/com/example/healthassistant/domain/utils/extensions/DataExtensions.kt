@@ -1,8 +1,10 @@
 package com.example.healthassistant.domain.utils.extensions
 
 import com.example.healthassistant.data.model.HealthIndexEntity
+import com.example.healthassistant.data.model.HealthSummaryEntity
 import com.example.healthassistant.data.model.UserEntity
 import com.example.healthassistant.domain.model.HealthIndex
+import com.example.healthassistant.domain.model.HealthSummary
 import com.example.healthassistant.domain.model.User
 
 internal val UserEntity.toModel: User
@@ -51,4 +53,16 @@ internal val HealthIndex.toEntity: HealthIndexEntity
         unit = unit,
         recordedAt = recordedAt,
         isSelected = isSelected
+    )
+
+internal val HealthSummary.toEntity: HealthSummaryEntity
+    get() = HealthSummaryEntity(
+        id = id,
+        healthScore = healthIndexScore
+    )
+
+internal val HealthSummaryEntity.toModel: HealthSummary
+    get() = HealthSummary(
+        id = id,
+        healthIndexScore = healthScore
     )
