@@ -2,12 +2,14 @@ package com.example.healthassistant.presentation.features.dashboard
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -15,7 +17,6 @@ import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Divider
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.MaterialTheme
@@ -27,20 +28,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.healthassistant.domain.model.HealthIndex
 import com.example.healthassistant.presentation.components.DraggableCard
-import com.example.healthassistant.presentation.components.FabSize
 import com.example.healthassistant.presentation.components.Loader
 import com.example.healthassistant.presentation.components.MenuSheet
 import com.example.healthassistant.presentation.components.SheetState
 import com.example.healthassistant.presentation.theme.GreenDarkPrimary
-import com.example.healthassistant.presentation.utils.extensions.verticalGradientBackground
+import com.example.healthassistant.presentation.utils.ui.NetworkImage
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
@@ -97,11 +99,9 @@ fun Dashboard(
                 -sheetState.offset.value / dragRange
             }.coerceIn(0f, 1f)
 
-            IndicesListContent(state)
-
             HealthSummaryCard(state.healthSummaryScore, state.summaryLoading)
 
-            Divider()
+            IndicesListContent(state)
 
             MenuSheet(
                 { MenuContent() },
@@ -174,17 +174,37 @@ fun HealthSummaryCard(
 ) {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
-    val summaryCardHeight = screenHeight - 200.dp
+    val summaryCardHeight = screenHeight / 4
 
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Surface(
-            modifier = Modifier
-                .size(50.dp)
-                .clickable { },
-            shape = CircleShape,
-            color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-        ) {
-            if (!healthSummaryLoading) Text(text = healthIndex.toString())
+    Surface(
+        elevation = 16.dp,
+        shape = RectangleShape,
+        modifier = Modifier
+            .padding(end = 8.dp)
+            .fillMaxWidth()
+            .height(summaryCardHeight),
+    ) {
+        Row {
+            NetworkImage(
+                url = "https://play-lh.googleusercontent.com/Ui7iNIIJKajTlE1fJzFjNTHrilzBDcUROWSL7kn2IcdnrdQyTCroHjXRWkE7K5d_M",
+                contentDescription = null,
+                modifier = Modifier
+                    .size(28.dp)
+                    .clip(CircleShape)
+            )
+            Column(modifier = Modifier.padding(16.dp)) {
+                if (!healthSummaryLoading) {
+                    Text(
+                        text = healthIndex.toString(),
+                        style = MaterialTheme.typography.subtitle1,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(bottom = 4.dp)
+                    )
+                }
+            }
         }
     }
 }

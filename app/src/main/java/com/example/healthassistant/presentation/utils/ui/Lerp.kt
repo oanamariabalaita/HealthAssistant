@@ -1,4 +1,4 @@
-package com.example.healthassistant.presentation.utils.design
+package com.example.healthassistant.presentation.utils.ui
 
 import androidx.annotation.FloatRange
 import androidx.compose.ui.graphics.Color

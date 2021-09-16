@@ -54,13 +54,14 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     with(Dependencies) {
         implementation(appCompat)
         implementation(androidCore)
         implementation(timber)
         implementation(steho)
         implementation(stehoOkhttp)
-        implementation(rxAndroid)
         implementation(workManagerRx)
         implementation(workManager)
         implementation(scopeMob)

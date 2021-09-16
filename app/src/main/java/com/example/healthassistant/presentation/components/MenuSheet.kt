@@ -32,7 +32,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.healthassistant.presentation.theme.HealthAppTheme
-import com.example.healthassistant.presentation.utils.design.lerp
+import com.example.healthassistant.presentation.utils.ui.lerp
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.statusBarsPadding
 

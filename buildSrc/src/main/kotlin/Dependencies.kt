@@ -7,7 +7,6 @@ object Dependencies {
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
@@ -81,10 +80,6 @@ object Dependencies {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val steho = "com.facebook.stetho:stetho:${Versions.stetho}"
     const val stehoOkhttp = "com.facebook.stetho:stetho-okhttp3:${Versions.stetho}"
-    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rx}"
-    const val workManager = "androidx.work:work-runtime-ktx:${Versions.workManager}"
-    const val workManagerRx = "androidx.work:work-rxjava2:${Versions.workManager}"
-    const val chart = "com.github.PhilJay:MPAndroidChart:${Versions.chart}"
 
     // Test
     const val jUnit = "junit:junit:${Versions.jUnit}"
